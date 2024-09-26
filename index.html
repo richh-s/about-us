@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Decor</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    
+    <!-- AOS CSS CDN -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+    <!-- FontAwesome Icons CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js" crossorigin="anonymous"></script>
+</head>
+<body class="bg-gray-100 font-sans antialiased">
+
+    <!-- Navbar -->
+    <nav class="bg-white p-4 md:p-6 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <!-- Logo -->
+            <div class="text-xl md:text-2xl font-bold">DÉCOR</div>
+
+            <!-- Links -->
+            <div class="flex items-center space-x-4 md:space-x-6 text-sm md:text-base">
+                <a href="#" class="hover:text-yellow-500 transition duration-300 ease-in-out">Home</a>
+                <a href="#" class="text-yellow-500 hover:text-yellow-500 transition duration-300 ease-in-out">About Us</a> <!-- Active Link -->
+                <a href="#" class="hover:text-yellow-500 transition duration-300 ease-in-out">Shop</a>
+                <a href="#" class="hover:text-yellow-500 transition duration-300 ease-in-out">Blog</a>
+                <a href="#" class="hover:text-yellow-500 transition duration-300 ease-in-out">Contact</a>
+                
+                <!-- Search Icon and Search Bar -->
+                <div class="relative flex items-center">
+                    <!-- Search Icon -->
+                    <i class="fas fa-search text-gray-500 cursor-pointer hover:text-yellow-500 transition duration-300 ease-in-out" onclick="toggleSearch()"></i>
+                    
+                    <!-- Search Input (Hidden by default) -->
+                    <input type="text" id="searchBar" placeholder="Search..." class="hidden w-0 pl-4 border-b-2 border-gray-300 focus:outline-none transition-all duration-300 ease-in-out">
+                </div>
+
+                <!-- Cart Icon with Number Badge (Positioned Inside the Cart) -->
+                <div class="relative">
+                    <i class="fas fa-shopping-cart text-black cursor-pointer hover:text-yellow-500 transition duration-300 ease-in-out text-xl"></i>
+                    <span class="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 bg-yellow-500 text-white text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center">3</span>
+                </div>
+
+                <!-- User Avatar -->
+                <div class="ml-4">
+                    <img src="https://i.pravatar.cc/300" alt="User Avatar" class="w-8 h-8 rounded-full">
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section Layout (Correct Text for About Us) -->
+    <section class="bg-gray-100 py-8 md:py-16">
+        <div class="container mx-auto flex flex-col md:flex-row items-center md:space-x-8 px-4">
+            <!-- Text Section -->
+            <div class="md:w-1/2 text-left" data-aos="fade-right">
+                <h1 class="text-2xl md:text-3xl font-semibold">About Our Brand</h1>
+                <p class="mt-4 text-gray-600">
+                    We are a dedicated business specializing in creating custom furniture tailored to meet the specific needs and desires of our clients. With extensive experience in the furniture industry, we offer unique designs, high-quality craftsmanship, and full dedication to every project.
+                </p>
+                <p class="mt-4 text-gray-600">
+                    Whether you're furnishing your home, office, or any other space, we provide personalized solutions that perfectly match your style and preferences. At our company, your vision becomes reality.
+                </p>
+            </div>
+            <!-- Image Section -->
+            <div class="md:w-1/2 mt-6 md:mt-0" data-aos="fade-left">
+                <img src="assets/images/hero.jpg" alt="About Our Brand" class="mx-auto rounded-lg shadow-lg">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section with Fade-In Animation -->
+    <section class="py-8 md:py-12 bg-white" data-aos="fade-right">
+        <div class="container mx-auto text-center px-4">
+            <h2 class="text-xl md:text-2xl font-semibold">Our Dedication to Craftsmanship</h2>
+            <p class="mt-4 text-gray-600 max-w-3xl mx-auto text-sm md:text-base">
+                At DÉCOR, we believe that furniture is more than just a functional piece – it’s a statement of personal style and individuality. Our mission is to transform your vision into reality by providing custom solutions that perfectly match your style and preferences. We pride ourselves on the meticulous attention to detail and superior quality that go into every piece of furniture we create.
+            </p>
+            <p class="mt-4 text-gray-600 max-w-3xl mx-auto text-sm md:text-base">
+                Whether you're furnishing your home, office, or any other space, our team of skilled craftsmen and designers work hand-in-hand with you to understand your unique needs.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6" data-aos="fade-up">
+        <div class="container mx-auto text-center text-sm md:text-base">
+            © 2024 Decor. All Rights Reserved.
+        </div>
+    </footer>
+
+    <!-- AOS JS CDN -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <!-- AOS Initialization Script -->
+    <script>
+        AOS.init({
+            duration: 1200,  // Animation duration in milliseconds
+            once: true       // Whether animation should happen only once
+        });
+    </script>
+
+    <!-- JavaScript to toggle search bar -->
+    <script>
+        function toggleSearch() {
+            const searchBar = document.getElementById('searchBar');
+            if (searchBar.classList.contains('hidden')) {
+                searchBar.classList.remove('hidden');
+                searchBar.classList.add('inline-block');
+                searchBar.style.width = '150px'; // Expand width
+            } else {
+                searchBar.classList.add('hidden');
+                searchBar.style.width = '0'; // Collapse width
+            }
+        }
+    </script>
+</body>
+</html>
