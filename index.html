@@ -13,27 +13,52 @@
 
     <!-- FontAwesome Icons CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js" crossorigin="anonymous"></script>
+
+    <style>
+        /* Custom colors */
+        .bg-army-green {
+            background-color: #4b5320;
+        }
+
+        .text-army-green {
+            color: #4b5320;
+        }
+
+        .hover-red:hover {
+            color: #b22222;
+        }
+
+        .bg-red-custom {
+            background-color: #b22222;
+        }
+
+        .hover-bg-red:hover {
+            background-color: #b22222;
+        }
+    </style>
 </head>
 <body class="bg-gray-100 font-sans antialiased">
 
     <!-- Navbar -->
     <nav class="bg-white p-4 md:p-6 shadow-md">
         <div class="container mx-auto flex justify-between items-center">
-            <!-- Logo -->
-            <div class="text-xl md:text-2xl font-bold">DÉCOR</div>
+            <!-- Logo (Image from assets folder) -->
+            <div>
+                <img src="assets/images/logo.png" alt="Decor Logo" class="h-10 md:h-12">
+            </div>
 
             <!-- Links -->
             <div class="flex items-center space-x-4 md:space-x-6 text-sm md:text-base">
-                <a href="#" class="hover:text-yellow-500 transition duration-300 ease-in-out">Home</a>
-                <a href="#" class="text-yellow-500 hover:text-yellow-500 transition duration-300 ease-in-out">About Us</a> <!-- Active Link -->
-                <a href="#" class="hover:text-yellow-500 transition duration-300 ease-in-out">Shop</a>
-                <a href="#" class="hover:text-yellow-500 transition duration-300 ease-in-out">Blog</a>
-                <a href="#" class="hover:text-yellow-500 transition duration-300 ease-in-out">Contact</a>
+                <a href="#" class="text-black hover-red transition duration-300 ease-in-out">Home</a>
+                <a href="#" class="text-army-green hover-red transition duration-300 ease-in-out">About Us</a> <!-- Active Link -->
+                <a href="#" class="text-black hover-red transition duration-300 ease-in-out">Shop</a>
+                <a href="#" class="text-black hover-red transition duration-300 ease-in-out">Blog</a>
+                <a href="#" class="text-black hover-red transition duration-300 ease-in-out">Contact</a>
                 
                 <!-- Search Icon and Search Bar -->
                 <div class="relative flex items-center">
                     <!-- Search Icon -->
-                    <i class="fas fa-search text-gray-500 cursor-pointer hover:text-yellow-500 transition duration-300 ease-in-out" onclick="toggleSearch()"></i>
+                    <i class="fas fa-search text-black cursor-pointer hover-red transition duration-300 ease-in-out" onclick="toggleSearch()"></i>
                     
                     <!-- Search Input (Hidden by default) -->
                     <input type="text" id="searchBar" placeholder="Search..." class="hidden w-0 pl-4 border-b-2 border-gray-300 focus:outline-none transition-all duration-300 ease-in-out">
@@ -41,8 +66,8 @@
 
                 <!-- Cart Icon with Number Badge (Positioned Inside the Cart) -->
                 <div class="relative">
-                    <i class="fas fa-shopping-cart text-black cursor-pointer hover:text-yellow-500 transition duration-300 ease-in-out text-xl"></i>
-                    <span class="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 bg-yellow-500 text-white text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center">3</span>
+                    <i class="fas fa-shopping-cart text-black cursor-pointer hover-red transition duration-300 ease-in-out text-xl"></i>
+                    <span class="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 bg-red-custom text-white text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center">3</span>
                 </div>
 
                 <!-- User Avatar -->
@@ -56,9 +81,9 @@
     <!-- Hero Section Layout (Correct Text for About Us) -->
     <section class="bg-gray-100 py-8 md:py-16">
         <div class="container mx-auto flex flex-col md:flex-row items-center md:space-x-8 px-4">
-            <!-- Text Section -->
+            <!-- Text Section (No Card) -->
             <div class="md:w-1/2 text-left" data-aos="fade-right">
-                <h1 class="text-2xl md:text-3xl font-semibold">About Our Brand</h1>
+                <h1 class="text-2xl md:text-3xl font-semibold text-army-green">About Our Brand</h1>
                 <p class="mt-4 text-gray-600">
                     We are a dedicated business specializing in creating custom furniture tailored to meet the specific needs and desires of our clients. With extensive experience in the furniture industry, we offer unique designs, high-quality craftsmanship, and full dedication to every project.
                 </p>
@@ -66,28 +91,60 @@
                     Whether you're furnishing your home, office, or any other space, we provide personalized solutions that perfectly match your style and preferences. At our company, your vision becomes reality.
                 </p>
             </div>
-            <!-- Image Section -->
+            <!-- Image Section (In a Card) -->
             <div class="md:w-1/2 mt-6 md:mt-0" data-aos="fade-left">
                 <img src="assets/images/hero.jpg" alt="About Our Brand" class="mx-auto rounded-lg shadow-lg">
             </div>
         </div>
     </section>
 
-    <!-- About Section with Fade-In Animation -->
-    <section class="py-8 md:py-12 bg-white" data-aos="fade-right">
-        <div class="container mx-auto text-center px-4">
-            <h2 class="text-xl md:text-2xl font-semibold">Our Dedication to Craftsmanship</h2>
-            <p class="mt-4 text-gray-600 max-w-3xl mx-auto text-sm md:text-base">
-                At DÉCOR, we believe that furniture is more than just a functional piece – it’s a statement of personal style and individuality. Our mission is to transform your vision into reality by providing custom solutions that perfectly match your style and preferences. We pride ourselves on the meticulous attention to detail and superior quality that go into every piece of furniture we create.
-            </p>
-            <p class="mt-4 text-gray-600 max-w-3xl mx-auto text-sm md:text-base">
-                Whether you're furnishing your home, office, or any other space, our team of skilled craftsmen and designers work hand-in-hand with you to understand your unique needs.
+    <!-- Overview Section (Text Only, No Card) -->
+    <section class="py-8 bg-white" data-aos="fade-up">
+        <div class="container mx-auto text-center">
+            <h2 class="text-2xl md:text-3xl font-semibold text-army-green">Overview</h2>
+            <p class="mt-4 text-gray-600 max-w-2xl mx-auto">
+                From unique designs to quality craftsmanship, we are fully dedicated to transforming spaces with custom furniture that caters to your specific needs. At our company, we combine beauty and functionality to provide you with the perfect furniture pieces for any space.
             </p>
         </div>
     </section>
 
+    <!-- Featured Section (Only Image in Card) -->
+    <section class="py-12 bg-gray-100">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+            <!-- Text Section (No Card) -->
+            <div class="text-left" data-aos="zoom-in-up">
+                <h3 class="text-lg md:text-xl font-semibold">Carefully Considered Details & Perfections</h3>
+                <p class="mt-4 text-gray-600">
+                    Each piece of furniture we create is designed with the utmost attention to detail.
+                </p>
+                <button class="mt-6 px-4 py-2 md:px-6 md:py-3 bg-army-green text-white rounded-full hover-bg-red transition duration-300 ease-in-out">Learn More</button>
+            </div>
+            <!-- Image Section (In a Card) -->
+            <div data-aos="zoom-in-left">
+                <img src="assets/images/details.jpg" alt="Details & Perfection" class="rounded-lg shadow-lg w-full h-full object-cover">
+            </div>
+        </div>
+    </section>
+
+    <!-- Shop Section (Image in Card, Standalone Text) -->
+    <section class="py-12 bg-white" data-aos="fade-right">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+            <!-- Image Section (In a Card) -->
+            <div data-aos="fade-up">
+                <img src="assets/images/living-room.jpg" alt="Living Room" class="rounded-lg shadow-lg w-full h-full object-cover transform hover:scale-110 transition duration-500 ease-in-out">
+            </div>
+            <!-- Text Section (No Card, Standalone) -->
+            <div class="text-left" data-aos="fade-left">
+                <h3 class="text-lg md:text-xl font-semibold">Crafted in Combination of Beauty & Perfection</h3>
+                <p class="mt-4 text-gray-600">
+                    We focus on creating pieces that combine beauty and functionality, perfectly crafted to fit any environment.
+                </p>
+                <button class="mt-6 px-4 py-2 md:px-6 md:py-3 bg-army-green text-white rounded-full hover-bg-red transition duration-300 ease-in-out">Shop Now</button>
+            </div>
+        </div>
+    </section>
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-6" data-aos="fade-up">
+    <footer class="bg-army-green text-white py-6" data-aos="fade-up">
         <div class="container mx-auto text-center text-sm md:text-base">
             © 2024 Decor. All Rights Reserved.
         </div>
