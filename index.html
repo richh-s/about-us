@@ -89,42 +89,69 @@
 <body class="bg-white font-sans antialiased">
 
     <!-- Responsive Navbar -->
-    <nav class="bg-white py-4 lg:py-4 md:py-3 px-4 shadow-md z-20">
+    <nav class="bg-white py-4 px-4 shadow-md z-20">
         <div class="container mx-auto flex justify-between items-center">
+            <!-- Menu Icon for smaller screens -->
             <div class="block md:hidden">
                 <button id="nav-toggle" class="focus:outline-none">
                     <i class="fas fa-bars text-xl text-black"></i>
                 </button>
             </div>
-
+    
+            <!-- Logo centered on smaller screens -->
             <div class="flex-1 flex justify-center md:justify-start">
                 <img src="assets/images/logo.png" alt="Decor Logo" class="h-6 md:h-8">
             </div>
-
+    
+            <!-- Shopping Cart Icon on the right side -->
+            <div class="flex md:hidden items-center">
+                <div class="relative">
+                    <i class="fas fa-shopping-cart text-black cursor-pointer hover-red transition duration-300 ease-in-out text-xl"></i>
+                    <span class="cart-badge">3</span>
+                </div>
+            </div>
+    
+            <!-- Navigation links and search (hidden on smaller screens) -->
             <div class="hidden md:flex items-center space-x-4 md:space-x-6 text-sm md:text-base" id="nav-content">
                 <a href="#" class="text-black hover-red transition duration-300 ease-in-out" onclick="showPage('home')">Home</a>
                 <a href="#" class="text-army-green hover-red transition duration-300 ease-in-out" onclick="showPage('about')">About Us</a>
                 <a href="#" class="text-black hover-red transition duration-300 ease-in-out">Shop</a>
                 <a href="#" class="text-black hover-red transition duration-300 ease-in-out">Blog</a>
-                <a href="#" class="text-black hover-red transition duration-300 ease-in-out mr-10">Contact</a>
-
+                <a href="#" class="text-black hover-red transition duration-300 ease-in-out">Contact</a>
+    
+                <!-- Search Bar -->
                 <div class="relative flex items-center">
                     <input type="text" id="searchBar" placeholder="Search..." class="hidden w-0 pl-4 py-1 border-2 border-army-green focus:outline-none transition-all duration-300 ease-in-out">
                     <i class="fas fa-search text-black cursor-pointer hover-red search-icon-spacing transition duration-300 ease-in-out absolute mr-2" onclick="toggleSearch()"></i>
                 </div>
-
+    
                 <div class="relative">
                     <i class="fas fa-shopping-cart text-black cursor-pointer hover-red transition duration-300 ease-in-out text-xl"></i>
                     <span class="cart-badge">3</span>
                 </div>
-
+    
                 <div class="ml-4">
                     <img src="https://i.pravatar.cc/300" alt="User Avatar" class="w-8 h-8 rounded-full">
                 </div>
             </div>
         </div>
+    
+        <!-- Dropdown Menu (visible on smaller screens) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white absolute w-full top-16 left-0 shadow-md">
+            <ul class="flex flex-col items-start p-4 space-y-4">
+                <li><a href="#" class="text-black hover:text-red-600 transition duration-300 ease-in-out" onclick="showPage('home')">Home</a></li>
+                <li><a href="#" class="text-black hover:text-red-600 transition duration-300 ease-in-out" onclick="showPage('about')">About Us</a></li>
+                <li><a href="#" class="text-black hover:text-red-600 transition duration-300 ease-in-out">Shop</a></li>
+                <li><a href="#" class="text-black hover:text-red-600 transition duration-300 ease-in-out">Blog</a></li>
+                <li><a href="#" class="text-black hover:text-red-600 transition duration-300 ease-in-out">Contact</a></li>
+                
+                <!-- Search Field in the Dropdown -->
+                <li class="w-full">
+                    <input type="text" class="w-full border-2 border-army-green px-4 py-2 rounded-md" placeholder="Search...">
+                </li>
+            </ul>
+        </div>
     </nav>
-
     <!-- Hero Section -->
     <section id="home" class="hero-bg flex items-center justify-center text-white relative">
         <div class="absolute inset-0 bg-black opacity-40"></div> <!-- Dark overlay for better text visibility -->
@@ -141,7 +168,7 @@
     </section>
     
     <!-- Urban Living Section -->
-    <section class="py-20 bg-gray-50">
+    <section class="py-20">
         <div class="container mx-auto px-4">
           <!-- About Us and Title Section -->
           <div class="flex flex-col lg:flex-row justify-between items-start">
@@ -202,7 +229,7 @@
     
     
 <!-- Latest Furniture Section -->
-<section class="py-20 bg-gray-50">
+<section class="py-20 ">
     <div class="container mx-auto px-4">
         <div class="text-center mb-8">
             <h2 class="text-3xl font-bold">Latest Furniture</h2>
@@ -219,31 +246,31 @@
         <div class="flex space-x-4 justify-center"> <!-- Center align cards -->
             <!-- Card 1 -->
             <div class="bg-white p-4 rounded-lg shadow-md w-48 h-64"> <!-- Increased width to w-48 -->
-                <img src="path/to/edelis-chair.jpg" alt="Edelis Chair" class="w-full h-32 object-cover rounded-lg mb-2"> <!-- Update with actual image path -->
+                <img src="assets/images/img14.jpeg" alt="Edelis Chair" class="w-full h-32 object-cover rounded-lg mb-2"> <!-- Update with actual image path -->
                 <h3 class="text-lg font-semibold">Edelis Chair</h3>
                 <p class="text-gray-600">Makeup and Chairs</p>
             </div>
             <!-- Card 2 -->
             <div class="bg-white p-4 rounded-lg shadow-md w-48 h-72 transform translate-y-1/4"> <!-- Increased width to w-48 and kept transform -->
-                <img src="path/to/rumpi-chair.jpg" alt="Rumpi Chair" class="w-full h-32 object-cover rounded-lg mb-2"> <!-- Update with actual image path -->
+                <img src="assets/images/img15.jpeg" alt="Rumpi Chair" class="w-full h-32 object-cover rounded-lg mb-2"> <!-- Update with actual image path -->
                 <h3 class="text-lg font-semibold">Rumpi Chair</h3>
                 <p class="text-gray-600">Makeup and Chairs</p>
             </div>
             <!-- Card 3 -->
             <div class="bg-white p-4 rounded-lg shadow-md w-48 h-64"> <!-- Increased width to w-48 -->
-                <img src="path/to/timor-table.jpg" alt="Timor Table" class="w-full h-32 object-cover rounded-lg mb-2"> <!-- Update with actual image path -->
+                <img src="assets/images/img19.jpeg" alt="Timor Table" class="w-full h-32 object-cover rounded-lg mb-2"> <!-- Update with actual image path -->
                 <h3 class="text-lg font-semibold">Timor Table</h3>
                 <p class="text-gray-600">Workspace Desk</p>
             </div>
             <!-- Card 4 -->
             <div class="bg-white p-4 rounded-lg shadow-md w-48 h-72 transform translate-y-1/4"> <!-- Increased width to w-48 and kept transform -->
-                <img src="path/to/matai-wardrobe.jpg" alt="Matai Wardrobe" class="w-full h-32 object-cover rounded-lg mb-2"> <!-- Update with actual image path -->
+                <img src="assets/images/img9.jpeg" alt="Matai Wardrobe" class="w-full h-32 object-cover rounded-lg mb-2"> <!-- Update with actual image path -->
                 <h3 class="text-lg font-semibold">Matai Wardrobe</h3>
                 <p class="text-gray-600">Accent Tables & Cabinets</p>
             </div>
             <!-- Card 5 -->
             <div class="bg-white p-4 rounded-lg shadow-md w-48 h-64"> <!-- Increased width to w-48 -->
-                <img src="path/to/cita-chair.jpg" alt="Cita Chair" class="w-full h-32 object-cover rounded-lg mb-2"> <!-- Update with actual image path -->
+                <img src="assets/images/img15.jpeg" alt="Cita Chair" class="w-full h-32 object-cover rounded-lg mb-2"> <!-- Update with actual image path -->
                 <h3 class="text-lg font-semibold">Cita Chair</h3>
                 <p class="text-gray-600">Side Chair</p>
             </div>
@@ -426,47 +453,55 @@
 
 
 
-    <!-- JavaScript to toggle between Home and About Us -->
-    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            once: true,
-            duration: 1000, 
-        });
-
-        function showPage(page) {
-            // Hide all sections
-            document.getElementById('home').classList.add('hidden');
-            document.getElementById('about').classList.add('hidden');
-            document.getElementById('overview-section').classList.add('hidden');
-            document.getElementById('last-section').classList.add('hidden');
-
-            // Show the requested section
-            if (page === 'about') {
-                document.getElementById('about').classList.remove('hidden');
-                document.getElementById('overview-section').classList.remove('hidden');
-                document.getElementById('last-section').classList.remove('hidden');
-            } else {
-                document.getElementById('home').classList.remove('hidden');
-            }
-        }
-
-        function toggleSearch() {
-            const searchBar = document.getElementById('searchBar');
-            if (searchBar.classList.contains('hidden')) {
-                searchBar.classList.remove('hidden');
-                searchBar.style.width = '150px';
-                searchBar.focus();
-            } else {
-                searchBar.classList.add('hidden');
-                searchBar.style.width = '0';
-            }
-        }
-
-        document.getElementById('nav-toggle').addEventListener('click', function () {
-            const navDropdown = document.getElementById('nav-dropdown');
-            navDropdown.classList.toggle('hidden');
-        });
-    </script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+      // Initialize AOS
+      AOS.init({
+          once: true,
+          duration: 1000,
+      });
+  
+      // Function to toggle the mobile menu
+      const navToggle = document.getElementById('nav-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+  
+      navToggle.addEventListener('click', () => {
+          mobileMenu.classList.toggle('hidden');
+      });
+  
+      // Function to show the selected page
+      function showPage(page) {
+          // Hide all sections
+          document.getElementById('home').classList.add('hidden');
+          document.getElementById('about').classList.add('hidden');
+          document.getElementById('overview-section').classList.add('hidden');
+          document.getElementById('last-section').classList.add('hidden');
+  
+          // Show the requested section
+          if (page === 'about') {
+              document.getElementById('about').classList.remove('hidden');
+              document.getElementById('overview-section').classList.remove('hidden');
+              document.getElementById('last-section').classList.remove('hidden');
+          } else {
+              document.getElementById('home').classList.remove('hidden');
+          }
+      }
+  
+      // Function to toggle search bar
+      function toggleSearch() {
+          const searchBar = document.getElementById('searchBar');
+          if (searchBar.classList.contains('hidden')) {
+              searchBar.classList.remove('hidden');
+              searchBar.style.width = '150px';
+              searchBar.focus();
+          } else {
+              searchBar.classList.add('hidden');
+              searchBar.style.width = '0';
+          }
+      }
+  
+      // Menu toggle is already handled above, no need to duplicate
+  </script>
+  
 </body>
 </html>
