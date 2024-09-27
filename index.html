@@ -24,6 +24,10 @@
             color: #4b5320;
         }
 
+        .border-army-green {
+            border-color: #4b5320;
+        }
+
         .hover-red:hover {
             color: #b22222;
         }
@@ -46,11 +50,11 @@
             background-color: #e0a917;
         }
 
-        /* Fix for overflow to prevent horizontal scrolling */
+        /* Disable horizontal scroll for the whole page */
         body {
             overflow-x: hidden;
         }
-        
+
         /* Set maximum width for the container */
         .max-w-94 {
             max-width: 94%;
@@ -61,23 +65,43 @@
             margin-right: -100px; /* Further increased value to push image more */
         }
 
+        /* Background image for About Us section */
+        .about-bg {
+            background-image: url('assets/images/hero.jpg'); /* Adjust to your image path */
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* No space under the last section */
+        .no-space {
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
     </style>
 </head>
 <body class="bg-white font-sans antialiased">
 
     <!-- Responsive Navbar -->
-    <nav class="bg-white py-2 md:py-3 shadow-md z-20">
+    <nav class="bg-white py-4 lg:py-4  md:py-3 px-4 shadow-md z-20">
         <div class="container mx-auto flex justify-between items-center">
-            <!-- Logo -->
-            <div>
-                <img src="assets/images/logo.png" alt="Decor Logo" class="h-6 md:h-8">
-            </div>
-
             <!-- Hamburger Menu (Mobile) -->
             <div class="block md:hidden">
                 <button id="nav-toggle" class="focus:outline-none">
                     <i class="fas fa-bars text-xl text-black"></i>
                 </button>
+            </div>
+
+            <!-- Logo (Centered on mobile) -->
+            <div class="flex-1 flex justify-center md:justify-start">
+                <img src="assets/images/logo.png" alt="Decor Logo" class="h-6 md:h-8">
+            </div>
+
+            <!-- Cart Icon (Right aligned on mobile) -->
+            <div class="block md:hidden">
+                <div class="relative">
+                    <i class="fas fa-shopping-cart text-black cursor-pointer hover-red transition duration-300 ease-in-out text-xl"></i>
+                    <span class="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 bg-red-custom text-white text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center">3</span>
+                </div>
             </div>
 
             <!-- Links (Visible on Medium & Larger Screens) -->
@@ -88,10 +112,10 @@
                 <a href="#" class="text-black hover-red transition duration-300 ease-in-out">Blog</a>
                 <a href="#" class="text-black hover-red transition duration-300 ease-in-out">Contact</a>
 
-                <!-- Search Icon and Search Bar -->
+                <!-- Search Bar (Larger Screens) -->
                 <div class="relative flex items-center">
-                    <i class="fas fa-search text-black cursor-pointer hover-red transition duration-300 ease-in-out" onclick="toggleSearch()"></i>
-                    <input type="text" id="searchBar" placeholder="Search..." class="hidden w-0 pl-4 border-b-2 border-gray-300 focus:outline-none transition-all duration-300 ease-in-out">
+                    <input type="text" id="searchBar" placeholder="Search..." class="hidden w-0 pl-2 py-1 border-2 border-army-green focus:outline-none transition-all duration-300 ease-in-out">
+                    <i class="fas fa-search text-black cursor-pointer hover-red transition duration-300 ease-in-out absolute right-0 mr-2" onclick="toggleSearch()"></i>
                 </div>
 
                 <!-- Cart Icon with Number Badge -->
@@ -116,27 +140,30 @@
                 <a href="#" class="block text-black hover-red transition duration-300 ease-in-out">Blog</a>
                 <a href="#" class="block text-black hover-red transition duration-300 ease-in-out">Contact</a>
             </div>
+
+            <!-- Fixed search bar with search icon inside for mobile -->
+            <div class="px-4 py-2">
+                <div class="relative flex items-center">
+                    <input type="text" placeholder="Search..." class="w-full pl-4 pr-10 py-1 border-2 border-army-green focus:outline-none transition-all duration-300 ease-in-out">
+                    <i class="fas fa-search text-black absolute right-0 mr-4 cursor-pointer hover-red transition duration-300 ease-in-out"></i>
+                </div>
+            </div>
         </div>
     </nav>
 
-    <!-- About Us Section -->
-    <section class="bg-gray-100 py-8 md:py-16">
-        <div class="container mx-auto flex flex-col md:flex-row items-center md:space-x-8 px-4">
-            <!-- Text Section (No Card) -->
-            <div class="md:w-1/2 text-left">
-                <h1 class="text-2xl md:text-3xl font-semibold text-army-green">About Us</h1>
-                <p class="mt-4 text-gray-700">
+    <!-- About Us Section with background image -->
+    <section class="about-bg py-32">
+        <div class="container mx-auto px-4">
+            <div class="md:w-1/2 text-left text-black" data-aos="fade-left">
+                <h1 class="text-3xl md:text-3xl text-army-green font-semibold">About Us</h1>
+                <p class="mt-4 text-[30px]">
                     We specialize in custom furniture, offering unique designs and high-quality craftsmanship. Whether you're furnishing your home or office, we provide personalized solutions tailored to your style and needs.
                 </p>
-            </div>
-            <!-- Image Section (In a Card) -->
-            <div class="md:w-1/2 mt-6 md:mt-0">
-                <img src="assets/images/hero.jpg" alt="About Our Brand" class="mx-auto rounded-lg shadow-lg">
             </div>
         </div>
     </section>
 
-    <!-- Overview Section (Text Only, No Card) -->
+    <!-- Overview Section -->
     <section class="py-8 bg-white">
         <div class="container mx-auto text-center">
             <h2 class="text-2xl md:text-3xl font-semibold text-army-green">Overview</h2>
@@ -146,56 +173,87 @@
         </div>
     </section>
 
-   <!-- Last Section with Gray Background and Image Overlap -->
-   <section class="py-12 bg-white">
-    <div class="relative flex justify-start">
-        <!-- Gray Background starting from the left, with space on the right -->
-        <div class="bg-gray-100 rounded-lg p-8 md:p-12 max-w-94"> <!-- Limited max-width to 94% to leave white space on the right -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                
-                <!-- First Text Section (inside the gray background) -->
-                <div class="text-left">
-                    <h3 class="text-lg md:text-xl font-semibold text-army-green">Carefully Considered Details & Perfections</h3>
-                    <p class="mt-4 text-gray-700">
-                        Each piece of furniture we create is designed with the utmost attention to detail.
-                    </p>
-                    <button class="mt-6 px-4 py-2 md:px-6 md:py-3 btn-yellow rounded-full transition duration-300 ease-in-out">Learn More</button>
-                </div>
-
-                <!-- First Image (Extending even further beyond Gray Background into White Space) -->
-                <div class="relative img-extend rounded-lg shadow-lg overflow-hidden"> <!-- Extended image even more beyond gray part -->
-                    <img src="assets/images/details.jpg" alt="Details & Perfection" class="w-full h-full object-cover">
-                </div>
-
-                <!-- Second Image (Full Width inside the gray background) -->
-                <div class="rounded-lg shadow-lg overflow-hidden">
-                    <img src="assets/images/living-room.jpg" alt="Living Room" class="w-full h-full object-cover">
-                </div>
-
-                <!-- Second Text Section (inside the gray background) -->
-                <div class="text-left">
-                    <h3 class="text-lg md:text-xl font-semibold text-army-green">Crafted in Combination of Beauty & Perfection</h3>
-                    <p class="mt-4 text-gray-700">
-                        We focus on creating pieces that combine beauty and functionality, perfectly crafted to fit any environment.
-                    </p>
-                    <button class="mt-6 px-4 py-2 md:px-6 md:py-3 btn-yellow rounded-full transition duration-300 ease-in-out">Shop Now</button>
+    <!-- Last Section with Gray Background and No Space Under -->
+    <section class="py-12 bg-white">
+        <div class="relative flex justify-start">
+            <!-- Gray Background starting from the left, with space on the right -->
+            <div class="bg-gray-100  p-8 md:p-12 max-w-94 w-full"> 
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    
+                    <!-- First Text Section (inside the gray background) -->
+                    <div class="text-left">
+                        <h3 class="text-lg md:text-xl font-semibold text-army-green">Carefully Considered Details & Perfections</h3>
+                        <p class="mt-4 text-gray-700">
+                            Each piece of furniture we create is designed with the utmost attention to detail.
+                        </p>
+                        <button class="mt-6 px-4 py-2 md:px-6 md:py-3 btn-green rounded-full transition duration-300 ease-in-out">Learn More</button>
+                    </div>
+    
+                    <!-- First Image (Extending even further beyond Gray Background into White Space) -->
+                    <div class="relative img-extend rounded-lg shadow-lg overflow-hidden lg:mb-4">
+                        <img src="assets/images/rev-img-3.jpg" alt="Details & Perfection" class="w-full h-full object-cover">
+                    </div>
+    
+                    <!-- Second Image (Full Width inside the gray background) -->
+                    <div class="rounded-lg shadow-lg overflow-hidden">
+                        <img src="assets/images/rev-img-1.jpg" alt="Living Room" class="w-full h-full object-cover">
+                    </div>
+    
+                    <!-- Second Text Section (inside the gray background) -->
+                    <div class="text-left">
+                        <h3 class="text-lg md:text-xl font-semibold text-army-green">Crafted in Combination of Beauty & Perfection</h3>
+                        <p class="mt-4 text-gray-700">
+                            We focus on creating pieces that combine beauty and functionality, perfectly crafted to fit any environment.
+                        </p>
+                        <button class="mt-6 px-4 py-2 md:px-6 md:py-3 btn-green rounded-full transition duration-300 ease-in-out">Shop Now</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+    
+    <style>
+        .bg-army-green {
+            background-color: #4b5320; 
+        }
+    
+        .hover\:bg-red-custom:hover {
+            background-color: #b22222; 
+        }
+    
+        .img-extend {
+            margin-right: -100px; 
+        }
+    
+        .max-w-94 {
+            max-width: 94%;
+        }
+    
+        .btn-green {
+            background-color: #4b5320;
+            color: white;
+        }
+    
+        .btn-green:hover {
+            background-color: #b22222; 
+        }
+    </style>
+    
 
     <!-- JavaScript to toggle search bar and mobile menu -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script>
+        AOS.init();
+        
         function toggleSearch() {
             const searchBar = document.getElementById('searchBar');
             if (searchBar.classList.contains('hidden')) {
                 searchBar.classList.remove('hidden');
-                searchBar.classList.add('inline-block');
-                searchBar.style.width = '150px'; // Expand width
+                searchBar.style.width = '150px'; 
+                searchBar.focus(); 
             } else {
                 searchBar.classList.add('hidden');
-                searchBar.style.width = '0'; // Collapse width
+                searchBar.style.width = '0'; 
             }
         }
 
@@ -207,4 +265,3 @@
     </script>
 </body>
 </html>
-
