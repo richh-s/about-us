@@ -62,12 +62,12 @@
 
         /* Set negative margin for image to extend beyond gray section */
         .img-extend {
-            margin-right: -100px; /* Further increased value to push image more */
+            margin-right: -100px; 
         }
 
         /* Background image for About Us section */
         .about-bg {
-            background-image: url('assets/images/hero.jpg'); /* Adjust to your image path */
+            background-image: url('assets/images/hero.jpg'); 
             background-size: cover;
             background-position: center;
         }
@@ -177,16 +177,18 @@
     <section class="py-12 bg-white">
         <div class="relative flex justify-start">
             <!-- Gray Background starting from the left, with space on the right -->
-            <div class="bg-gray-100  p-8 md:p-12 max-w-94 w-full"> 
+            <div class="bg-gray-100 p-8 md:p-12 max-w-94 w-full"> 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    
+    
                     <!-- First Text Section (inside the gray background) -->
-                    <div class="text-left">
-                        <h3 class="text-lg md:text-xl font-semibold text-army-green">Carefully Considered Details & Perfections</h3>
-                        <p class="mt-4 text-gray-700">
-                            Each piece of furniture we create is designed with the utmost attention to detail.
-                        </p>
-                        <button class="mt-6 px-4 py-2 md:px-6 md:py-3 btn-green rounded-full transition duration-300 ease-in-out">Learn More</button>
+                    <div class="flex items-center text-left h-full">
+                        <div class="max-w-md"> 
+                            <h3 class="text-lg md:text-xl font-semibold text-army-green">Carefully Considered Details & Perfections</h3>
+                            <p class="mt-4 text-gray-700">
+                                Each piece of furniture we create is designed with the utmost attention to detail.
+                            </p>
+                            <button class="mt-6 px-4 py-2 md:px-6 md:py-3 btn-green rounded-full transition duration-300 ease-in-out hover:bg-red-custom">Learn More</button> <!-- Added hover effect -->
+                        </div>
                     </div>
     
                     <!-- First Image (Extending even further beyond Gray Background into White Space) -->
@@ -200,12 +202,14 @@
                     </div>
     
                     <!-- Second Text Section (inside the gray background) -->
-                    <div class="text-left">
-                        <h3 class="text-lg md:text-xl font-semibold text-army-green">Crafted in Combination of Beauty & Perfection</h3>
-                        <p class="mt-4 text-gray-700">
-                            We focus on creating pieces that combine beauty and functionality, perfectly crafted to fit any environment.
-                        </p>
-                        <button class="mt-6 px-4 py-2 md:px-6 md:py-3 btn-green rounded-full transition duration-300 ease-in-out">Shop Now</button>
+                    <div class="flex items-center text-left h-full">
+                        <div class="max-w-md"> 
+                            <h3 class="text-lg md:text-xl font-semibold text-army-green">Crafted in Combination of Beauty & Perfection</h3>
+                            <p class="mt-4 text-gray-700">
+                                We focus on creating pieces that combine beauty and functionality, perfectly crafted to fit any environment.
+                            </p>
+                            <button class="mt-6 px-4 py-2 md:px-6 md:py-3 btn-green rounded-full transition duration-300 ease-in-out hover:bg-red-custom">Shop Now</button> <!-- Added hover effect -->
+                        </div>
                     </div>
                 </div>
             </div>
@@ -229,6 +233,10 @@
             max-width: 94%;
         }
     
+        .max-w-md {
+            max-width: 400px; 
+        }
+    
         .btn-green {
             background-color: #4b5320;
             color: white;
@@ -238,6 +246,7 @@
             background-color: #b22222; 
         }
     </style>
+    
     
 
     <!-- JavaScript to toggle search bar and mobile menu -->
