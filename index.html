@@ -35,36 +35,66 @@
         .hover-bg-red:hover {
             background-color: #b22222;
         }
+
+        /* Custom button styling */
+        .btn-yellow {
+            background-color: #f3be22;
+            color: white;
+        }
+
+        .btn-yellow:hover {
+            background-color: #e0a917;
+        }
+
+        /* Fix for overflow to prevent horizontal scrolling */
+        body {
+            overflow-x: hidden;
+        }
+        
+        /* Set maximum width for the container */
+        .max-w-94 {
+            max-width: 94%;
+        }
+
+        /* Set negative margin for image to extend beyond gray section */
+        .img-extend {
+            margin-right: -100px; /* Further increased value to push image more */
+        }
+
     </style>
 </head>
-<body class="bg-gray-100 font-sans antialiased">
+<body class="bg-white font-sans antialiased">
 
-    <!-- Navbar -->
-    <nav class="bg-white p-4 md:p-6 shadow-md">
+    <!-- Responsive Navbar -->
+    <nav class="bg-white py-2 md:py-3 shadow-md z-20">
         <div class="container mx-auto flex justify-between items-center">
-            <!-- Logo (Image from assets folder) -->
+            <!-- Logo -->
             <div>
-                <img src="assets/images/logo.png" alt="Decor Logo" class="h-10 md:h-12">
+                <img src="assets/images/logo.png" alt="Decor Logo" class="h-6 md:h-8">
             </div>
 
-            <!-- Links -->
-            <div class="flex items-center space-x-4 md:space-x-6 text-sm md:text-base">
+            <!-- Hamburger Menu (Mobile) -->
+            <div class="block md:hidden">
+                <button id="nav-toggle" class="focus:outline-none">
+                    <i class="fas fa-bars text-xl text-black"></i>
+                </button>
+            </div>
+
+            <!-- Links (Visible on Medium & Larger Screens) -->
+            <div class="hidden md:flex items-center space-x-4 md:space-x-6 text-sm md:text-base" id="nav-content">
                 <a href="#" class="text-black hover-red transition duration-300 ease-in-out">Home</a>
-                <a href="#" class="text-army-green hover-red transition duration-300 ease-in-out">About Us</a> <!-- Active Link -->
+                <a href="#" class="text-army-green hover-red transition duration-300 ease-in-out">About Us</a>
                 <a href="#" class="text-black hover-red transition duration-300 ease-in-out">Shop</a>
                 <a href="#" class="text-black hover-red transition duration-300 ease-in-out">Blog</a>
                 <a href="#" class="text-black hover-red transition duration-300 ease-in-out">Contact</a>
-                
+
                 <!-- Search Icon and Search Bar -->
                 <div class="relative flex items-center">
-                    <!-- Search Icon -->
                     <i class="fas fa-search text-black cursor-pointer hover-red transition duration-300 ease-in-out" onclick="toggleSearch()"></i>
-                    
-                    <!-- Search Input (Hidden by default) -->
                     <input type="text" id="searchBar" placeholder="Search..." class="hidden w-0 pl-4 border-b-2 border-gray-300 focus:outline-none transition-all duration-300 ease-in-out">
                 </div>
 
-                <!-- Cart Icon with Number Badge (Positioned Inside the Cart) -->
+                <!-- Cart Icon with Number Badge -->
                 <div class="relative">
                     <i class="fas fa-shopping-cart text-black cursor-pointer hover-red transition duration-300 ease-in-out text-xl"></i>
                     <span class="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 bg-red-custom text-white text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center">3</span>
@@ -76,91 +106,86 @@
                 </div>
             </div>
         </div>
+
+        <!-- Dropdown menu for mobile (Initially hidden) -->
+        <div class="md:hidden hidden" id="nav-dropdown">
+            <div class="p-4 space-y-4">
+                <a href="#" class="block text-black hover-red transition duration-300 ease-in-out">Home</a>
+                <a href="#" class="block text-army-green hover-red transition duration-300 ease-in-out">About Us</a>
+                <a href="#" class="block text-black hover-red transition duration-300 ease-in-out">Shop</a>
+                <a href="#" class="block text-black hover-red transition duration-300 ease-in-out">Blog</a>
+                <a href="#" class="block text-black hover-red transition duration-300 ease-in-out">Contact</a>
+            </div>
+        </div>
     </nav>
 
-    <!-- Hero Section Layout (Correct Text for About Us) -->
+    <!-- About Us Section -->
     <section class="bg-gray-100 py-8 md:py-16">
         <div class="container mx-auto flex flex-col md:flex-row items-center md:space-x-8 px-4">
             <!-- Text Section (No Card) -->
-            <div class="md:w-1/2 text-left" data-aos="fade-right">
-                <h1 class="text-2xl md:text-3xl font-semibold text-army-green">About Our Brand</h1>
-                <p class="mt-4 text-gray-600">
-                    We are a dedicated business specializing in creating custom furniture tailored to meet the specific needs and desires of our clients. With extensive experience in the furniture industry, we offer unique designs, high-quality craftsmanship, and full dedication to every project.
-                </p>
-                <p class="mt-4 text-gray-600">
-                    Whether you're furnishing your home, office, or any other space, we provide personalized solutions that perfectly match your style and preferences. At our company, your vision becomes reality.
+            <div class="md:w-1/2 text-left">
+                <h1 class="text-2xl md:text-3xl font-semibold text-army-green">About Us</h1>
+                <p class="mt-4 text-gray-700">
+                    We specialize in custom furniture, offering unique designs and high-quality craftsmanship. Whether you're furnishing your home or office, we provide personalized solutions tailored to your style and needs.
                 </p>
             </div>
             <!-- Image Section (In a Card) -->
-            <div class="md:w-1/2 mt-6 md:mt-0" data-aos="fade-left">
+            <div class="md:w-1/2 mt-6 md:mt-0">
                 <img src="assets/images/hero.jpg" alt="About Our Brand" class="mx-auto rounded-lg shadow-lg">
             </div>
         </div>
     </section>
 
     <!-- Overview Section (Text Only, No Card) -->
-    <section class="py-8 bg-white" data-aos="fade-up">
+    <section class="py-8 bg-white">
         <div class="container mx-auto text-center">
             <h2 class="text-2xl md:text-3xl font-semibold text-army-green">Overview</h2>
-            <p class="mt-4 text-gray-600 max-w-2xl mx-auto">
+            <p class="mt-4 text-gray-700 max-w-2xl mx-auto">
                 From unique designs to quality craftsmanship, we are fully dedicated to transforming spaces with custom furniture that caters to your specific needs. At our company, we combine beauty and functionality to provide you with the perfect furniture pieces for any space.
             </p>
         </div>
     </section>
 
-    <!-- Featured Section (Only Image in Card) -->
-    <section class="py-12 bg-gray-100">
-        <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
-            <!-- Text Section (No Card) -->
-            <div class="text-left" data-aos="zoom-in-up">
-                <h3 class="text-lg md:text-xl font-semibold">Carefully Considered Details & Perfections</h3>
-                <p class="mt-4 text-gray-600">
-                    Each piece of furniture we create is designed with the utmost attention to detail.
-                </p>
-                <button class="mt-6 px-4 py-2 md:px-6 md:py-3 bg-army-green text-white rounded-full hover-bg-red transition duration-300 ease-in-out">Learn More</button>
-            </div>
-            <!-- Image Section (In a Card) -->
-            <div data-aos="zoom-in-left">
-                <img src="assets/images/details.jpg" alt="Details & Perfection" class="rounded-lg shadow-lg w-full h-full object-cover">
+   <!-- Last Section with Gray Background and Image Overlap -->
+   <section class="py-12 bg-white">
+    <div class="relative flex justify-start">
+        <!-- Gray Background starting from the left, with space on the right -->
+        <div class="bg-gray-100 rounded-lg p-8 md:p-12 max-w-94"> <!-- Limited max-width to 94% to leave white space on the right -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- First Text Section (inside the gray background) -->
+                <div class="text-left">
+                    <h3 class="text-lg md:text-xl font-semibold text-army-green">Carefully Considered Details & Perfections</h3>
+                    <p class="mt-4 text-gray-700">
+                        Each piece of furniture we create is designed with the utmost attention to detail.
+                    </p>
+                    <button class="mt-6 px-4 py-2 md:px-6 md:py-3 btn-yellow rounded-full transition duration-300 ease-in-out">Learn More</button>
+                </div>
+
+                <!-- First Image (Extending even further beyond Gray Background into White Space) -->
+                <div class="relative img-extend rounded-lg shadow-lg overflow-hidden"> <!-- Extended image even more beyond gray part -->
+                    <img src="assets/images/details.jpg" alt="Details & Perfection" class="w-full h-full object-cover">
+                </div>
+
+                <!-- Second Image (Full Width inside the gray background) -->
+                <div class="rounded-lg shadow-lg overflow-hidden">
+                    <img src="assets/images/living-room.jpg" alt="Living Room" class="w-full h-full object-cover">
+                </div>
+
+                <!-- Second Text Section (inside the gray background) -->
+                <div class="text-left">
+                    <h3 class="text-lg md:text-xl font-semibold text-army-green">Crafted in Combination of Beauty & Perfection</h3>
+                    <p class="mt-4 text-gray-700">
+                        We focus on creating pieces that combine beauty and functionality, perfectly crafted to fit any environment.
+                    </p>
+                    <button class="mt-6 px-4 py-2 md:px-6 md:py-3 btn-yellow rounded-full transition duration-300 ease-in-out">Shop Now</button>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Shop Section (Image in Card, Standalone Text) -->
-    <section class="py-12 bg-white" data-aos="fade-right">
-        <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
-            <!-- Image Section (In a Card) -->
-            <div data-aos="fade-up">
-                <img src="assets/images/living-room.jpg" alt="Living Room" class="rounded-lg shadow-lg w-full h-full object-cover transform hover:scale-110 transition duration-500 ease-in-out">
-            </div>
-            <!-- Text Section (No Card, Standalone) -->
-            <div class="text-left" data-aos="fade-left">
-                <h3 class="text-lg md:text-xl font-semibold">Crafted in Combination of Beauty & Perfection</h3>
-                <p class="mt-4 text-gray-600">
-                    We focus on creating pieces that combine beauty and functionality, perfectly crafted to fit any environment.
-                </p>
-                <button class="mt-6 px-4 py-2 md:px-6 md:py-3 bg-army-green text-white rounded-full hover-bg-red transition duration-300 ease-in-out">Shop Now</button>
-            </div>
-        </div>
-    </section>
-    <!-- Footer -->
-    <footer class="bg-army-green text-white py-6" data-aos="fade-up">
-        <div class="container mx-auto text-center text-sm md:text-base">
-            © 2024 Decor. All Rights Reserved.
-        </div>
-    </footer>
-
-    <!-- AOS JS CDN -->
-    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-    <!-- AOS Initialization Script -->
-    <script>
-        AOS.init({
-            duration: 1200,  // Animation duration in milliseconds
-            once: true       // Whether animation should happen only once
-        });
-    </script>
-
-    <!-- JavaScript to toggle search bar -->
+    <!-- JavaScript to toggle search bar and mobile menu -->
     <script>
         function toggleSearch() {
             const searchBar = document.getElementById('searchBar');
@@ -173,6 +198,13 @@
                 searchBar.style.width = '0'; // Collapse width
             }
         }
+
+        // Toggle mobile navigation
+        document.getElementById('nav-toggle').addEventListener('click', function () {
+            const navDropdown = document.getElementById('nav-dropdown');
+            navDropdown.classList.toggle('hidden');
+        });
     </script>
 </body>
 </html>
+
