@@ -33,7 +33,7 @@
             background-image: url('assets/images/img1.jpeg');
             background-size: cover;
             background-position: center;
-            height: 600px; /* Adjust height as necessary */
+            height: 550px; /* Adjust height as necessary */
         }
 
         /* Background image for About Us section */
@@ -87,12 +87,18 @@
             background-color: #b22222; /* Red */
             transform: scale(1.05);
         }
+
+        nav {
+    z-index: 50; /* or higher value */
+}
+
     </style>
 </head>
 <body class="bg-white font-sans antialiased">
 
 <!-- Responsive Navbar -->
-<nav class="bg-white  px-4 shadow-md z-20">
+<!-- Responsive Navbar -->
+<nav class="bg-white px-4 shadow-md z-20">
     <div class="container mx-auto flex justify-between items-center">
         <div class="block md:hidden">
             <button id="nav-toggle" class="focus:outline-none">
@@ -100,8 +106,8 @@
             </button>
         </div>
 
-        <div class="flex-1 flex justify-center md:justify-start">
-            <img src="assets/images/logo.png" alt="Mobileri Lala Logo" class="h-6 md:h-8">
+        <div class="flex-1 flex justify-start md:justify-between">
+            <img src="assets/images/logo.png" alt="Mobileri Lala Logo" class="h-6 md:h-8 mx-auto md:mx-0">
         </div>
 
         <div class="hidden md:flex items-center space-x-4 md:space-x-6 text-sm md:text-base" id="nav-content">
@@ -119,9 +125,10 @@
                     <i class="fas fa-shopping-cart text-black cursor-pointer hover-red transition duration-300 ease-in-out text-xl"></i>
                     <span class="cart-badge">3</span>
                 </div>
-            </div>
-            <div class="hidden md:block ml-4">
-                <img src="https://i.pravatar.cc/300" alt="User Avatar" class="w-8 h-8 rounded-full">
+                <!-- User Avatar next to Cart -->
+                <div class="ml-4">
+                    <img src="https://i.pravatar.cc/300" alt="User Avatar" class="w-8 h-8 rounded-full">
+                </div>
             </div>
         </div>
 
@@ -133,7 +140,7 @@
             </div>
         </div>
     </div>
-
+    
     <div id="mobile-menu" class="hidden md:hidden bg-white absolute w-full top-11 left-0 shadow-md z-30 transition-all duration-300 ease-in-out">
         <ul class="flex flex-col items-start p-4 space-y-4">
             <li><a href="#" class="text-black hover:text-red-600 transition duration-300 ease-in-out" onclick="showPage('home')">Home</a></li>
@@ -144,37 +151,41 @@
             <li class="w-full">
                 <input type="text" id="searchBar" placeholder="Search..." class="w-full border-2 border-army-green px-4 py-2 rounded-md focus:outline-none transition-all duration-300 ease-in-out">
             </li>
-            <!-- Removed the Drag text -->
         </ul>
     </div>
 </nav>
+
+
+
+
 
 <!-- Hero Section -->
 <section id="home" class="hero-bg flex text-white relative">
     <div class="absolute inset-0 bg-black opacity-40"></div>
     <div class="container mx-auto text-center relative z-10">
-        <div class="flex items-center justify-start mt-16" style="margin-left: 410px;"> 
+        <div class="flex flex-col items-center mt-16 -ml-36 lg:-ml-64"> 
             <h2 class="subtitle text-sm font-semibold mb-1 animate__animated animate__fadeInLeft">For Urban Living</h2>
             <div class="h-px bg-gray-300 ml-2 w-8"></div> 
         </div>
         
-        
-        
         <h2 class="company-name text-7xl font-bold mb-0 animate__animated animate__fadeInLeft">Mobileri Lala</h2>
         
-        <p class="description-text mb-8 text-left animate__animated animate__fadeInLeft mx-auto pl-80" style="margin-top: 15px; max-width: 600px;">
+        <p class="description-text mb-8 text-left animate__animated animate__fadeInLeft ml-auto" style="margin-top: 10px; max-width: 600px;">
+
             <span class="block">We believe that good</span>
+            
             <span class="block">design should be easy</span>
-            <span class="block"> to accept</span>
-        </p>
-        
+            
+            <span class="block">to accept</span>
+            
+            </p> 
         <!-- Buttons positioned at the left bottom corner -->
         <div class="button-container flex flex-col space-y-4 absolute left-4 bottom-4">
             <button class="shop-button">Shop Ready Stock</button>
             <button class="preorder-button">Pre-Order Instead</button>
         </div>
     </div>
-
+    
     <style>
         .container {
             max-width: 1200px; 
@@ -182,7 +193,7 @@
             padding: 20px; 
             position: relative; 
         }
-
+    
         /* New class for buttons */
         .shop-button, .preorder-button {
             padding: 10px 20px;
@@ -193,23 +204,30 @@
             cursor: pointer;
             transition: background-color 0.3s, color 0.3s;
         }
-
+    
         .shop-button:hover, .preorder-button:hover {
             background-color: white; 
-            color: #4CAF50; 
+            color: #4b5320; 
         }
-
+    
         /* Responsive adjustments */
         @media (max-width: 768px) {
             .subtitle {
                 font-size: 0.75rem; 
             }
-
+    
             .company-name {
                 font-size: 3rem; 
             }
+    
+            /* Ensure description text is centered and consistent */
+            .description-text {
+                padding-left: 0; /* Reset padding */
+                text-align: center; /* Center text on smaller screens */
+            }
         }
     </style>
+    
 </section>
 
 
@@ -263,77 +281,140 @@
     </section>
 
     <!-- Quality Section -->
-    <section class="py-20">
+    <section class="py-16">
         <div class="container mx-auto px-4 flex flex-col lg:flex-row items-center justify-center">
             <div class="w-full lg:w-2/5 lg:pr-8 mb-8 lg:mb-0" data-aos="fade-right">
                 <img src="assets/images/img11.jpeg" alt="Quality Furniture" class="rounded-lg shadow-lg w-full" style="height: 450px; object-fit: cover;" data-aos="fade-right">
             </div>
-            <div class="w-full lg:w-2/5 text-center lg:text-left" data-aos="fade-left">
-                <h2 class="text-5xl font-bold mb-4">
+            <div class="w-full lg:w-2/5 text-left mb-8 lg:mb-0" data-aos="fade-left">
+                <h2 class="text-3xl lg:text-5xl font-bold mb-4">
                     Quality Keeps Us<br />Moving Forward.
                 </h2>
-                <p class="text-gray-600 mb-6 text-justify max-w-md mx-auto lg:mx-0">
+                <p class="text-gray-600 mb-6 text-justify max-w-md">
                     We have more than 30 years of experience producing and exporting furniture for international markets. More than ten million pieces of furniture have been delivered to families and businesses around the world.
                 </p>
                 <button class="btn">Learn More</button>
             </div>
-            
-            <style>
+        </div>
+        
+        <style>
             .max-w-md {
                 max-width: 24rem; /* Adjust this value as needed */
             }
-            </style>
-        </div>
+        </style>
     </section>
 
     <!-- Latest Furniture Section -->
     <section class="py-20">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-8" data-aos="fade-up">
+            <div class="text-center mb-8">
                 <h2 class="text-3xl font-bold">Latest Furniture</h2>
                 <p class="mt-2 text-lg text-gray-600">Our newest product</p>
             </div>
-            <div class="flex items-center justify-between mb-4">
-                <div class="flex-1">
+            <div class="flex flex-col sm:flex-row items-center justify-between mb-4">
+                <div class="flex-1 text-center sm:text-left mb-2 sm:mb-0">
                     <span id="prev" class="text-gray-500 cursor-pointer">← Drag →</span>
                 </div>
-                <button class="btn">Shop Ready Stock</button>
+                <button class="btn text-white px-4 py-2 rounded sm:ml-2">Shop Ready Stock</button>
             </div>
             <div id="card-container" class="flex flex-wrap justify-center min-h-[400px]">
-                <div class="bg-gray-100 p-4 rounded-lg shadow-md w-48 h-80 mx-2 my-2 transform transition-transform duration-300 ease-in-out translate-y-1/4" data-aos="fade-up">
-                    <img src="assets/images/img14.jpeg" alt="Edelis Chair" class="w-full h-48 object-cover rounded-lg mb-2">
+                <div class="bg-gray-100 p-4 rounded-lg shadow-md w-48 h-96 mx-2 my-2 card">
+                    <div class="number-badge">01</div>
+                    <img src="assets/images/img14.jpeg" alt="Edelis Chair" class="w-full h-48 object-cover rounded-lg mb-4 mt-8">
                     <h3 class="text-lg font-semibold">Edelis Chair</h3>
                     <p class="text-gray-600">Makeup and Chairs</p>
                 </div>
-                <div class="bg-gray-100 p-4 rounded-lg shadow-md w-48 h-80 mx-2 my-2 transform transition-transform duration-300 ease-in-out" data-aos="fade-up">
-                    <img src="assets/images/img15.jpeg" alt="Rumpi Chair" class="w-full h-48 object-cover rounded-lg mb-2">
+                <div class="bg-gray-100 p-4 rounded-lg shadow-md w-48 h-96 mx-2 my-2 card no-hover">
+                    <div class="number-badge">02</div>
+                    <img src="assets/images/img15.jpeg" alt="Rumpi Chair" class="w-full h-48 object-cover rounded-lg mb-4 mt-8">
                     <h3 class="text-lg font-semibold">Rumpi Chair</h3>
                     <p class="text-gray-600">Makeup and Chairs</p>
                 </div>
-                <div class="bg-gray-100 p-4 rounded-lg shadow-md w-48 h-80 mx-2 my-2 transform transition-transform duration-300 ease-in-out translate-y-1/4" data-aos="fade-up">
-                    <img src="assets/images/img19.jpeg" alt="Timor Table" class="w-full h-48 object-cover rounded-lg mb-2">
+                <div class="bg-gray-100 p-4 rounded-lg shadow-md w-48 h-96 mx-2 my-2 card">
+                    <div class="number-badge">03</div>
+                    <img src="assets/images/img19.jpeg" alt="Timor Table" class="w-full h-48 object-cover rounded-lg mb-4 mt-8">
                     <h3 class="text-lg font-semibold">Timor Table</h3>
                     <p class="text-gray-600">Workspace Desk</p>
                 </div>
-                <div class="bg-gray-100 p-4 rounded-lg shadow-md w-48 h-80 mx-2 my-2 transform transition-transform duration-300 ease-in-out" data-aos="fade-up">
-                    <img src="assets/images/img9.jpeg" alt="Matai Wardrobe" class="w-full h-48 object-cover rounded-lg mb-2">
+                <div class="bg-gray-100 p-4 rounded-lg shadow-md w-48 h-96 mx-2 my-2 card no-hover">
+                    <div class="number-badge">04</div>
+                    <img src="assets/images/img9.jpeg" alt="Matai Wardrobe" class="w-full h-48 object-cover rounded-lg mb-4 mt-8">
                     <h3 class="text-lg font-semibold">Matai Wardrobe</h3>
                     <p class="text-gray-600">Accent Tables & Cabinets</p>
                 </div>
-                <div class="bg-gray-100 p-4 rounded-lg shadow-md w-48 h-80 mx-2 my-2 transform transition-transform duration-300 ease-in-out translate-y-1/4" data-aos="fade-up">
-                    <img src="assets/images/img15.jpeg" alt="Cita Chair" class="w-full h-48 object-cover rounded-lg mb-2">
+                <div class="bg-gray-100 p-4 rounded-lg shadow-md w-48 h-96 mx-2 my-2 card">
+                    <div class="number-badge">05</div>
+                    <img src="assets/images/img15.jpeg" alt="Cita Chair" class="w-full h-48 object-cover rounded-lg mb-4 mt-8">
                     <h3 class="text-lg font-semibold">Cita Chair</h3>
                     <p class="text-gray-600">Side Chair</p>
                 </div>
             </div>
+        
+            <style>
+              .number-badge {
+    position: absolute;
+    top: 10px; /* Adjust as needed for spacing */
+    left: 10px; /* Adjust as needed */
+    
+    width: auto; /* Adjusted to fit the content */
+    height: auto; /* Adjusted to fit the content */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold; /* Make the number stand out */
+    color: black; /* Set the text color */
+    box-shadow: none; /* Remove shadow */
+}
+        
+                .card {
+                    position: relative; /* Ensure the card is the positioning context for absolute children */
+                    margin-bottom: 20px; /* Add bottom margin */
+                    transition: transform 0.3s ease; /* Smooth transition */
+                }
+        
+                /* Zigzag effect */
+                .card:nth-child(1) {
+                    transform: translateY(0px); /* No translation */
+                }
+        
+                .card:nth-child(2) {
+                    transform: translateY(55px); /* Move down 50px */
+                }
+        
+                .card:nth-child(3) {
+                    transform: translateY(0px); /* No translation */
+                }
+        
+                .card:nth-child(4) {
+                    transform: translateY(55px); /* Move down 50px */
+                }
+        
+                .card:nth-child(5) {
+                    transform: translateY(0px); /* No translation */
+                }
+        
+                /* Remove hover effect */
+                .no-hover {
+                    pointer-events: none; /* Disable hover effects */
+                }
+        
+                .card:hover {
+                    transform: none; /* No effect on hover for other cards */
+                }
+        
+                .hidden {
+                    display: none; /* Ensure this does not affect the layout */
+                }
+            </style>
         </div>
+        
     </section>
 
     <!-- Sourced From Sustainable Forests Section -->
     <section class="py-20">
         <div class="container mx-auto px-4 flex flex-col lg:flex-row justify-center items-center">
-            <div class="w-full lg:w-2/5 pr-10 lg:pr-10 text-center lg:text-left" data-aos="fade-right">
-                <h2 class="text-3xl font-bold">Sourced From Sustainable Forests.</h2>
+            <div class="w-full lg:w-2/5 pr-10 lg:pr-10 text-left" data-aos="fade-right">
+                <h2 class="text-3xl lg:text-5xl font-bold">Sourced From Sustainable Forests.</h2>
                 <p class="mt-4 text-gray-600 text-justify">
                     We care about the origin of the wood. The wood we use comes from responsibly managed forests, including forests that we manage under accredited international certification.
                 </p>
@@ -364,7 +445,7 @@
     <div class="overlay"></div> <!-- Overlay for About Us section -->
     <div class="container mx-auto px-4">
         <div class="md:w-1/3 text-left text-white" data-aos="fade-left" data-aos-duration="1000">
-            <h1 class="text-3xl md:text-3xl text-army-green font-semibold">About Us</h1>
+            <h1 class="text-3xl md:text-3xl text-white font-semibold">About Us</h1>
             <p class="mt-4 text-lg text-justify" data-aos="fade-up" data-aos-duration="1200">
                 From unique designs to quality craftsmanship, we are fully dedicated to transforming spaces.
             </p>
@@ -488,37 +569,81 @@
     // Initialize AOS (Animate on Scroll)
     document.addEventListener('DOMContentLoaded', () => {
         AOS.init({
-            duration: 1200,  // Animation duration in milliseconds
-            once: true,      // Animation should happen only once while scrolling down
+            duration: 1200,
+            once: true,
         });
 
-      
+        console.log('AOS initialized and DOM fully loaded');
+        console.log('Initial width on load:', window.innerWidth);
+        checkNavbarVisibility();
     });
 
+    // Navbar toggle for mobile view
     const navToggle = document.getElementById('nav-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
+    const navContent = document.getElementById('nav-content');
 
+    console.log('Navbar content element:', navContent);
+    console.log('Initial state of navbar content (hidden):', navContent.classList.contains('hidden'));
+
+    // Toggle the mobile menu when clicking the hamburger button
     navToggle.addEventListener('click', () => {
         mobileMenu.classList.toggle('hidden');
+        console.log('Mobile menu toggled. Current state (hidden):', mobileMenu.classList.contains('hidden'));
+    });
+
+    // Function to check and log navbar visibility based on window width
+    function checkNavbarVisibility() {
+        if (window.innerWidth >= 768) {
+            navContent.classList.remove('hidden');
+            console.log('Navbar content is now visible on larger screens');
+        } else {
+            navContent.classList.add('hidden');
+            console.log('Navbar content is hidden on smaller screens');
+        }
+    }
+
+    // Ensure the mobile menu closes when switching to a larger screen
+    window.addEventListener('resize', () => {
+        console.log('Window resized. Current width:', window.innerWidth);
+        checkNavbarVisibility();
+        
+        // Hide mobile menu if resizing to larger screens
+        if (window.innerWidth >= 768) {
+            mobileMenu.classList.add('hidden');
+            console.log('Mobile menu hidden due to window size');
+        }
     });
 
     function showPage(page) {
-        // Hide all sections first
-        document.getElementById('home').classList.add('hidden');
-        document.getElementById('about').classList.add('hidden');
-        document.getElementById('home-sections').classList.add('hidden');
-        document.getElementById('overview-section').classList.add('hidden');
-        document.getElementById('last-section').classList.add('hidden');
+        console.log('Showing page:', page);
 
-        // Show the requested section
+        const sections = ['home', 'about', 'home-sections', 'overview-section', 'last-section'];
+        sections.forEach(sectionId => {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.classList.add('hidden');
+                console.log(`Hiding section: ${sectionId}`);
+            } else {
+                console.error(`Section not found: ${sectionId}`);
+            }
+        });
+
         if (page === 'about') {
             document.getElementById('about').classList.remove('hidden');
             document.getElementById('overview-section').classList.remove('hidden');
             document.getElementById('last-section').classList.remove('hidden');
+            console.log('About section is now visible');
         } else {
             document.getElementById('home').classList.remove('hidden');
             document.getElementById('home-sections').classList.remove('hidden');
+            console.log('Home section is now visible');
         }
+
+        sections.forEach(sectionId => {
+            const section = document.getElementById(sectionId);
+            console.log(`${sectionId} is visible:`, !section.classList.contains('hidden'));
+        });
     }
 
     function toggleSearch() {
@@ -527,49 +652,46 @@
             searchBar.classList.remove('hidden');
             searchBar.style.width = '150px';
             searchBar.focus();
+            console.log('Search bar shown');
         } else {
             searchBar.classList.add('hidden');
             searchBar.style.width = '0';
+            console.log('Search bar hidden');
         }
     }
 
+    // Card display logic for the Latest Furniture section
     const cards = document.querySelectorAll('#card-container > div');
     const totalCards = cards.length;
     let currentIndex = 0;
 
-    function showCard(index) {
+    function showCards() {
+        console.log('Showing cards. Current index:', currentIndex);
         cards.forEach((card, i) => {
             if (window.innerWidth < 768) {
-                card.classList.toggle('hidden', i !== index);
+                card.classList.toggle('hidden', i !== currentIndex);
+                console.log(`Card ${i} visibility:`, !card.classList.contains('hidden'));
             } else {
                 card.classList.remove('hidden');
-                if (i % 2 === 1) { // Apply translate-y only to second, fourth, etc.
-                    card.classList.add('translate-y-1/4');
-                } else {
-                    card.classList.remove('translate-y-1/4');
-                }
+                card.style.transform = '';
             }
         });
     }
 
     document.getElementById('prev').addEventListener('click', () => {
         currentIndex = (currentIndex + 1) % totalCards;
-        showCard(currentIndex);
+        console.log('Next card index:', currentIndex);
+        showCards();
     });
 
-    showCard(currentIndex);
-
     function adjustCardDisplay() {
+        console.log('Adjusting card display. Window width:', window.innerWidth);
         if (window.innerWidth < 768) {
-            showCard(currentIndex);
+            showCards();
         } else {
-            cards.forEach((card, i) => {
+            cards.forEach(card => {
                 card.classList.remove('hidden');
-                if (i % 2 === 1) { // Apply translate-y only to second, fourth, etc.
-                    card.classList.add('translate-y-1/4');
-                } else {
-                    card.classList.remove('translate-y-1/4');
-                }
+                card.style.transform = '';
             });
         }
     }
@@ -577,6 +699,8 @@
     window.addEventListener('resize', adjustCardDisplay);
     adjustCardDisplay();
 </script>
+
+
 
 </body>
 </html>
