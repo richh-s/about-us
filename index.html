@@ -92,7 +92,7 @@
 <body class="bg-white font-sans antialiased">
 
 <!-- Responsive Navbar -->
-<nav class="bg-white py-4 px-4 shadow-md z-20">
+<nav class="bg-white  px-4 shadow-md z-20">
     <div class="container mx-auto flex justify-between items-center">
         <div class="block md:hidden">
             <button id="nav-toggle" class="focus:outline-none">
@@ -150,18 +150,68 @@
 </nav>
 
 <!-- Hero Section -->
-<section id="home" class="hero-bg flex items-center justify-center text-white relative">
+<section id="home" class="hero-bg flex text-white relative">
     <div class="absolute inset-0 bg-black opacity-40"></div>
     <div class="container mx-auto text-center relative z-10">
-        <h1 class="text-5xl font-bold mb-4 animate__animated animate__fadeInLeft">For Urban Living</h1>
-        <h2 class="text-3xl font-semibold mb-6 animate__animated animate__fadeInLeft">Mobileri Lala</h2>
-        <p class="mb-8 animate__animated animate__fadeInLeft">We believe that good design should be easy to accept</p>
-        <div class="flex flex-col space-y-4" style="align-items: flex-start;">
-            <button class="btn">Shop Ready Stock</button>
-            <button class="btn">Pre-Order Instead</button>
+        <div class="flex items-center justify-start mt-16" style="margin-left: 410px;"> 
+            <h2 class="subtitle text-sm font-semibold mb-1 animate__animated animate__fadeInLeft">For Urban Living</h2>
+            <div class="h-px bg-gray-300 ml-2 w-8"></div> 
+        </div>
+        
+        
+        
+        <h2 class="company-name text-7xl font-bold mb-0 animate__animated animate__fadeInLeft">Mobileri Lala</h2>
+        
+        <p class="description-text mb-8 text-left animate__animated animate__fadeInLeft mx-auto pl-80" style="margin-top: 15px; max-width: 600px;">
+            <span class="block">We believe that good</span>
+            <span class="block">design should be easy</span>
+            <span class="block"> to accept</span>
+        </p>
+        
+        <!-- Buttons positioned at the left bottom corner -->
+        <div class="button-container flex flex-col space-y-4 absolute left-4 bottom-4">
+            <button class="shop-button">Shop Ready Stock</button>
+            <button class="preorder-button">Pre-Order Instead</button>
         </div>
     </div>
+
+    <style>
+        .container {
+            max-width: 1200px; 
+            margin: 0 auto;
+            padding: 20px; 
+            position: relative; 
+        }
+
+        /* New class for buttons */
+        .shop-button, .preorder-button {
+            padding: 10px 20px;
+            background-color: transparent; 
+            color: white; 
+            border: 2px solid white; 
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .shop-button:hover, .preorder-button:hover {
+            background-color: white; 
+            color: #4CAF50; 
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .subtitle {
+                font-size: 0.75rem; 
+            }
+
+            .company-name {
+                font-size: 3rem; 
+            }
+        }
+    </style>
 </section>
+
 
 <div id="home-sections">
     <!-- Urban Living Section -->
