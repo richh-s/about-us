@@ -87,6 +87,12 @@
             background-color: #b22222; /* Red */
             transform: scale(1.05);
         }
+
+        @media (max-width: 768px) {
+            .cart-badge {
+                right: 10px; /* Adjust right positioning as needed */
+            }
+        }
     </style>
 </head>
 <body class="bg-white font-sans antialiased">
@@ -199,11 +205,11 @@
     <section class="py-20">
         <div class="container mx-auto px-4 flex flex-col lg:flex-row items-center justify-center">
             <div class="w-full lg:w-2/5 lg:pr-8 mb-8 lg:mb-0">
-                <img src="assets/images/img11.jpeg" alt="Quality Furniture" class="rounded-lg shadow-lg w-full" style="height: 450px; object-fit: cover;">
+                <img src="assets/images/img11.jpeg" alt="Quality Furniture" class="rounded-lg shadow-lg w-full" style="height: 450px; object-fit: cover;" data-aos="fade-right">
             </div>
-            <div class="w-full lg:w-2/5 text-center lg:text-left">
-                <h2 class="text-3xl font-bold mb-4 animate__animated animate__fadeInRight">Quality Keeps Us Moving Forward.</h2>
-                <p class="text-gray-600 mb-6 text-justify animate__animated animate__fadeInRight">
+            <div class="w-full lg:w-2/5 text-center lg:text-left" data-aos="fade-left">
+                <h2 class="text-3xl font-bold mb-4">Quality Keeps Us Moving Forward.</h2>
+                <p class="text-gray-600 mb-6 text-justify">
                     We have more than 30 years of experience producing and exporting furniture for international markets. More than ten million pieces of furniture have been delivered to families and businesses around the world.
                 </p>
                 <button class="btn">Learn More</button>
@@ -214,7 +220,7 @@
     <!-- Latest Furniture Section -->
     <section class="py-20">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-8">
+            <div class="text-center mb-8" data-aos="fade-up">
                 <h2 class="text-3xl font-bold">Latest Furniture</h2>
                 <p class="mt-2 text-lg text-gray-600">Our newest product</p>
             </div>
@@ -225,27 +231,27 @@
                 <button class="btn">Shop Ready Stock</button>
             </div>
             <div id="card-container" class="flex flex-wrap justify-center min-h-[400px]">
-                <div class="bg-gray-100 p-4 rounded-lg shadow-md w-48 h-80 mx-2 my-2 transform transition-transform duration-300 ease-in-out translate-y-1/4">
+                <div class="bg-gray-100 p-4 rounded-lg shadow-md w-48 h-80 mx-2 my-2 transform transition-transform duration-300 ease-in-out translate-y-1/4" data-aos="fade-up">
                     <img src="assets/images/img14.jpeg" alt="Edelis Chair" class="w-full h-48 object-cover rounded-lg mb-2">
                     <h3 class="text-lg font-semibold">Edelis Chair</h3>
                     <p class="text-gray-600">Makeup and Chairs</p>
                 </div>
-                <div class="bg-gray-100 p-4 rounded-lg shadow-md w-48 h-80 mx-2 my-2 transform transition-transform duration-300 ease-in-out">
+                <div class="bg-gray-100 p-4 rounded-lg shadow-md w-48 h-80 mx-2 my-2 transform transition-transform duration-300 ease-in-out" data-aos="fade-up">
                     <img src="assets/images/img15.jpeg" alt="Rumpi Chair" class="w-full h-48 object-cover rounded-lg mb-2">
                     <h3 class="text-lg font-semibold">Rumpi Chair</h3>
                     <p class="text-gray-600">Makeup and Chairs</p>
                 </div>
-                <div class="bg-gray-100 p-4 rounded-lg shadow-md w-48 h-80 mx-2 my-2 transform transition-transform duration-300 ease-in-out translate-y-1/4">
+                <div class="bg-gray-100 p-4 rounded-lg shadow-md w-48 h-80 mx-2 my-2 transform transition-transform duration-300 ease-in-out translate-y-1/4" data-aos="fade-up">
                     <img src="assets/images/img19.jpeg" alt="Timor Table" class="w-full h-48 object-cover rounded-lg mb-2">
                     <h3 class="text-lg font-semibold">Timor Table</h3>
                     <p class="text-gray-600">Workspace Desk</p>
                 </div>
-                <div class="bg-gray-100 p-4 rounded-lg shadow-md w-48 h-80 mx-2 my-2 transform transition-transform duration-300 ease-in-out">
+                <div class="bg-gray-100 p-4 rounded-lg shadow-md w-48 h-80 mx-2 my-2 transform transition-transform duration-300 ease-in-out" data-aos="fade-up">
                     <img src="assets/images/img9.jpeg" alt="Matai Wardrobe" class="w-full h-48 object-cover rounded-lg mb-2">
                     <h3 class="text-lg font-semibold">Matai Wardrobe</h3>
                     <p class="text-gray-600">Accent Tables & Cabinets</p>
                 </div>
-                <div class="bg-gray-100 p-4 rounded-lg shadow-md w-48 h-80 mx-2 my-2 transform transition-transform duration-300 ease-in-out translate-y-1/4">
+                <div class="bg-gray-100 p-4 rounded-lg shadow-md w-48 h-80 mx-2 my-2 transform transition-transform duration-300 ease-in-out translate-y-1/4" data-aos="fade-up">
                     <img src="assets/images/img15.jpeg" alt="Cita Chair" class="w-full h-48 object-cover rounded-lg mb-2">
                     <h3 class="text-lg font-semibold">Cita Chair</h3>
                     <p class="text-gray-600">Side Chair</p>
@@ -307,14 +313,14 @@
     </div>
 </section>
 
-<!-- Last Section -->
+<!-- Last Section (updated for crisscross layout) -->
 <section id="last-section" class="py-12 bg-white hidden" data-aos="fade-up" data-aos-duration="1000">
     <div class="relative flex justify-start">
         <div class="bg-gray-100 p-8 md:p-12 max-w-94 w-full">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 
                 <!-- First Text Section -->
-                <div class="flex items-center text-left h-full" data-aos="fade-right" data-aos-duration="1200">
+                <div class="flex items-center text-left h-full order-1" data-aos="fade-right" data-aos-duration="1200">
                     <div class="max-w-md">
                         <h3 class="text-lg md:text-xl font-semibold text-army-green">Carefully Considered Details & Perfections</h3>
                         <p class="mt-4 text-gray-700">
@@ -325,12 +331,17 @@
                 </div>
 
                 <!-- First Image -->
-                <div class="rounded-lg shadow-lg overflow-hidden" style="width: 500px; height: 300px;" data-aos="fade-left" data-aos-duration="1200">
+                <div class="rounded-lg shadow-lg overflow-hidden order-2" style="width: 500px; height: 300px;" data-aos="fade-left" data-aos-duration="1200">
                     <img src="assets/images/img6.jpeg" alt="Details & Perfection" class="w-full h-full object-cover object-center">
                 </div>
 
+                <!-- Second Image -->
+                <div class="rounded-lg shadow-lg overflow-hidden order-1 md:order-2" style="width: 500px; height: 300px;" data-aos="fade-left" data-aos-duration="1200">
+                    <img src="assets/images/img1.jpeg" alt="Living Room" class="w-full h-full object-cover object-center">
+                </div>
+
                 <!-- Second Text Section -->
-                <div class="flex items-center text-left h-full" data-aos="fade-right" data-aos-duration="1200">
+                <div class="flex items-center text-left h-full order-2" data-aos="fade-right" data-aos-duration="1200">
                     <div class="max-w-md">
                         <h3 class="text-lg md:text-xl font-semibold text-army-green">Crafted in Combination of Beauty & Perfection</h3>
                         <p class="mt-4 text-gray-700">
@@ -338,11 +349,6 @@
                         </p>
                         <button class="btn mt-6">Shop Now</button>
                     </div>
-                </div>
-
-                <!-- Second Image -->
-                <div class="rounded-lg shadow-lg overflow-hidden" style="width: 500px; height: 300px;" data-aos="fade-left" data-aos-duration="1200">
-                    <img src="assets/images/img1.jpeg" alt="Living Room" class="w-full h-full object-cover object-center">
                 </div>
 
             </div>
@@ -409,10 +415,31 @@
 
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
-    // Initialize AOS
-    AOS.init({
-        once: true,
-        duration: 1000,
+    // Initialize AOS (Animate on Scroll)
+    document.addEventListener('DOMContentLoaded', () => {
+        AOS.init({
+            duration: 1200,  // Animation duration in milliseconds
+            once: true,      // Animation should happen only once while scrolling down
+        });
+
+        // Counter functionality
+        document.querySelectorAll('.counter').forEach(counter => {
+            const updateCount = () => {
+                const target = +counter.getAttribute('data-count');
+                const count = +counter.innerText;
+
+                const increment = target / 200; // Adjust for speed
+
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + increment);
+                    setTimeout(updateCount, 1);
+                } else {
+                    counter.innerText = target;
+                }
+            };
+
+            updateCount();
+        });
     });
 
     const navToggle = document.getElementById('nav-toggle');
@@ -452,25 +479,6 @@
             searchBar.style.width = '0';
         }
     }
-
-    // Counter functionality
-    document.querySelectorAll('.counter').forEach(counter => {
-        const updateCount = () => {
-            const target = +counter.getAttribute('data-count');
-            const count = +counter.innerText;
-
-            const increment = target / 200; // Adjust for speed
-
-            if (count < target) {
-                counter.innerText = Math.ceil(count + increment);
-                setTimeout(updateCount, 1);
-            } else {
-                counter.innerText = target;
-            }
-        };
-
-        updateCount();
-    });
 
     const cards = document.querySelectorAll('#card-container > div');
     const totalCards = cards.length;
@@ -519,6 +527,4 @@
 
 </body>
 </html>
-
-
 
