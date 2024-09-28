@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Decor - Home & About Us</title>
-    
+    <title>Mobileri Lala - Home & About Us</title>
+
     <!-- Tailwind CSS CDN -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    
+
     <!-- AOS CSS CDN -->
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
@@ -30,45 +30,30 @@
 
         /* Background image for Hero Section */
         .hero-bg {
-            background-image: url('assets/images/img1.jpeg'); /* Change to your background image path */
+            background-image: url('assets/images/img1.jpeg');
             background-size: cover;
             background-position: center;
             height: 600px; /* Adjust height as necessary */
         }
 
-        /* Extend effect */
-        .img-extend {
-            margin-right: -100px; 
-        }
-
-        .max-w-94 {
-            max-width: 90%;
-        }
-
-        .max-w-md {
-            max-width: 400px; 
-        }
-
-        .btn-green {
-            background-color: #4b5320;
-            color: white;
-            animation: pulse 1s infinite ease-in-out;
-            transition: transform 0.3s ease;
-        }
-
-        .btn-green:hover {
-            background-color: #b22222;
-            transform: scale(1.1);
-        }
-
         /* Background image for About Us section */
         .about-bg {
-            background-image: url('assets/images/img5.jpeg'); 
+            background-image: url('assets/images/img5.jpeg');
             background-size: cover;
             background-position: center;
+            position: relative;
         }
 
-        /* Fix cart badge number */
+        /* Overlay for About Us section */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5); /* Adjust opacity as needed */
+        }
+
         .cart-badge {
             position: absolute;
             top: -5px;
@@ -84,424 +69,456 @@
             align-items: center;
             justify-content: center;
         }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        /* Button styles */
+        .btn {
+            background-color: #4b5320; /* Army Green */
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #b22222; /* Red */
+            transform: scale(1.05);
+        }
     </style>
 </head>
 <body class="bg-white font-sans antialiased">
 
-    <!-- Responsive Navbar -->
-    <nav class="bg-white py-4 px-4 shadow-md z-20">
-        <div class="container mx-auto flex justify-between items-center">
-            <!-- Menu Icon for smaller screens -->
-            <div class="block md:hidden">
-                <button id="nav-toggle" class="focus:outline-none">
-                    <i class="fas fa-bars text-xl text-black"></i>
-                </button>
+<!-- Responsive Navbar -->
+<nav class="bg-white py-4 px-4 shadow-md z-20">
+    <div class="container mx-auto flex justify-between items-center">
+        <div class="block md:hidden">
+            <button id="nav-toggle" class="focus:outline-none">
+                <i class="fas fa-bars text-xl text-black"></i>
+            </button>
+        </div>
+
+        <div class="flex-1 flex justify-center md:justify-start">
+            <img src="assets/images/logo.png" alt="Mobileri Lala Logo" class="h-6 md:h-8">
+        </div>
+
+        <div class="hidden md:flex items-center space-x-4 md:space-x-6 text-sm md:text-base" id="nav-content">
+            <a href="#" class="text-black hover:text-red-600 transition duration-300 ease-in-out" onclick="showPage('home')">Home</a>
+            <a href="#" class="text-black hover:text-red-600 transition duration-300 ease-in-out" onclick="showPage('about')">About Us</a>
+            <a href="#" class="text-black hover:text-red-600 transition duration-300 ease-in-out">Shop</a>
+            <a href="#" class="text-black hover:text-red-600 transition duration-300 ease-in-out">Blog</a>
+            <a href="#" class="text-black hover:text-red-600 transition duration-300 ease-in-out">Contact</a>
+            <div class="relative flex items-center">
+                <input type="text" id="searchBar" placeholder="Search..." class="hidden w-0 pl-4 py-1 border-2 border-army-green focus:outline-none transition-all duration-300 ease-in-out">
+                <i class="fas fa-search text-black cursor-pointer hover-red search-icon-spacing transition duration-300 ease-in-out absolute mr-2" onclick="toggleSearch()"></i>
             </div>
-    
-            <!-- Logo centered on smaller screens -->
-            <div class="flex-1 flex justify-center md:justify-start">
-                <img src="assets/images/logo.png" alt="Decor Logo" class="h-6 md:h-8">
-            </div>
-    
-            <!-- Shopping Cart Icon on the right side -->
-            <div class="flex md:hidden items-center">
+            <div class="flex items-center md:ml-4">
                 <div class="relative">
                     <i class="fas fa-shopping-cart text-black cursor-pointer hover-red transition duration-300 ease-in-out text-xl"></i>
                     <span class="cart-badge">3</span>
                 </div>
             </div>
-    
-            <!-- Navigation links and search (hidden on smaller screens) -->
-            <div class="hidden md:flex items-center space-x-4 md:space-x-6 text-sm md:text-base" id="nav-content">
-                <a href="#" class="text-black hover-red transition duration-300 ease-in-out" onclick="showPage('home')">Home</a>
-                <a href="#" class="text-army-green hover-red transition duration-300 ease-in-out" onclick="showPage('about')">About Us</a>
-                <a href="#" class="text-black hover-red transition duration-300 ease-in-out">Shop</a>
-                <a href="#" class="text-black hover-red transition duration-300 ease-in-out">Blog</a>
-                <a href="#" class="text-black hover-red transition duration-300 ease-in-out">Contact</a>
-    
-                <!-- Search Bar -->
-                <div class="relative flex items-center">
-                    <input type="text" id="searchBar" placeholder="Search..." class="hidden w-0 pl-4 py-1 border-2 border-army-green focus:outline-none transition-all duration-300 ease-in-out">
-                    <i class="fas fa-search text-black cursor-pointer hover-red search-icon-spacing transition duration-300 ease-in-out absolute mr-2" onclick="toggleSearch()"></i>
-                </div>
-    
-                <div class="relative">
-                    <i class="fas fa-shopping-cart text-black cursor-pointer hover-red transition duration-300 ease-in-out text-xl"></i>
-                    <span class="cart-badge">3</span>
-                </div>
-    
-                <div class="ml-4">
-                    <img src="https://i.pravatar.cc/300" alt="User Avatar" class="w-8 h-8 rounded-full">
-                </div>
+            <div class="hidden md:block ml-4">
+                <img src="https://i.pravatar.cc/300" alt="User Avatar" class="w-8 h-8 rounded-full">
             </div>
         </div>
-    
-        <!-- Dropdown Menu (visible on smaller screens) -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white absolute w-full top-16 left-0 shadow-md">
-            <ul class="flex flex-col items-start p-4 space-y-4">
-                <li><a href="#" class="text-black hover:text-red-600 transition duration-300 ease-in-out" onclick="showPage('home')">Home</a></li>
-                <li><a href="#" class="text-black hover:text-red-600 transition duration-300 ease-in-out" onclick="showPage('about')">About Us</a></li>
-                <li><a href="#" class="text-black hover:text-red-600 transition duration-300 ease-in-out">Shop</a></li>
-                <li><a href="#" class="text-black hover:text-red-600 transition duration-300 ease-in-out">Blog</a></li>
-                <li><a href="#" class="text-black hover:text-red-600 transition duration-300 ease-in-out">Contact</a></li>
-                
-                <!-- Search Field in the Dropdown -->
-                <li class="w-full">
-                    <input type="text" class="w-full border-2 border-army-green px-4 py-2 rounded-md" placeholder="Search...">
-                </li>
-            </ul>
+    </div>
+
+    <div id="mobile-menu" class="hidden md:hidden bg-white absolute w-full top-11 left-0 shadow-md z-30 transition-all duration-300 ease-in-out">
+        <ul class="flex flex-col items-start p-4 space-y-4">
+            <li><a href="#" class="text-black hover:text-red-600 transition duration-300 ease-in-out" onclick="showPage('home')">Home</a></li>
+            <li><a href="#" class="text-black hover:text-red-600 transition duration-300 ease-in-out" onclick="showPage('about')">About Us</a></li>
+            <li><a href="#" class="text-black hover:text-red-600 transition duration-300 ease-in-out">Shop</a></li>
+            <li><a href="#" class="text-black hover:text-red-600 transition duration-300 ease-in-out">Blog</a></li>
+            <li><a href="#" class="text-black hover:text-red-600 transition duration-300 ease-in-out">Contact</a></li>
+            <li class="w-full">
+                <input type="text" id="searchBar" placeholder="Search..." class="w-full border-2 border-army-green px-4 py-2 rounded-md focus:outline-none transition-all duration-300 ease-in-out">
+            </li>
+            <li class="flex justify-between w-full mt-4">
+                <div class="flex-1">
+                    <span id="prev" class="text-gray-500 cursor-pointer">← Drag →</span>
+                </div>
+                <div class="flex items-center">
+                    <div class="relative">
+                        <i class="fas fa-shopping-cart text-black cursor-pointer hover-red transition duration-300 ease-in-out text-xl"></i>
+                        <span class="cart-badge">3</span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section id="home" class="hero-bg flex items-center justify-center text-white relative">
+    <div class="absolute inset-0 bg-black opacity-40"></div>
+    <div class="container mx-auto text-center relative z-10">
+        <h1 class="text-5xl font-bold mb-4 animate__animated animate__fadeInLeft">For Urban Living</h1>
+        <h2 class="text-3xl font-semibold mb-6 animate__animated animate__fadeInLeft">Mobileri Lala</h2>
+        <p class="mb-8 animate__animated animate__fadeInLeft">We believe that good design should be easy to accept</p>
+        <div class="flex flex-col space-y-4" style="align-items: flex-start;">
+            <button class="btn">Shop Ready Stock</button>
+            <button class="btn">Pre-Order Instead</button>
         </div>
-    </nav>
-    <!-- Hero Section -->
-    <section id="home" class="hero-bg flex items-center justify-center text-white relative">
-        <div class="absolute inset-0 bg-black opacity-40"></div> <!-- Dark overlay for better text visibility -->
-        <div class="container mx-auto text-center relative z-10">
-            <h1 class="text-5xl font-bold mb-4">For Urban Living</h1>
-            <h2 class="text-3xl font-semibold mb-6">kayujati</h2>
-            <p class="mb-8">We believe that good design should be easy to accept</p>
-            <!-- Buttons container positioned at the bottom-left corner and moved further down -->
-            <div class="absolute left-0 flex flex-col space-y-4" style="bottom: -100px;">
-                <button class="btn-green px-6 py-3 rounded-full">Shop Ready Stock</button>
-                <button class="btn-green px-6 py-3 rounded-full">Pre-Order Instead</button>
-            </div>
-        </div>
-    </section>
-    
+    </div>
+</section>
+
+<div id="home-sections">
     <!-- Urban Living Section -->
     <section class="py-20">
         <div class="container mx-auto px-4">
-          <!-- About Us and Title Section -->
-          <div class="flex flex-col lg:flex-row justify-between items-start">
-            <!-- About Us Text -->
-            <div class="lg:w-1/2">
-              <p class="text-gray-400 text-lg mb-2">About us -></p>
-              <!-- Title: For Urban Living -->
-              <h2 class="text-3xl font-bold">
-                For Urban <br />Living.
-              </h2>
-            </div>
-      
-            <!-- Paragraph with first-line indent and left-aligned justified text -->
-            <p class="mt-4 text-lg text-gray-600 lg:mt-0 lg:w-1/2 lg:text-right text-left" style="text-indent: 2rem;">
-              We believe that good design should be easy to accept and comfortable to enjoy. For this reason, we collaborate with the best local designers to create furniture that is suitable for the needs of urban life—furniture that is pleasant to look at, reliable for the long term, but not difficult to deliver.
-            </p>
-          </div>
-      
-          <!-- Counters Section -->
-          <div class="flex flex-wrap justify-between items-center mt-12">
-            <div class="w-full md:w-1/3 text-center mb-8 md:mb-0">
-              <h3 class="text-4xl font-bold text-gray-900">900+</h3>
-              <p class="text-gray-600">Products that we have created and sold on the market</p>
-            </div>
-            <div class="w-full md:w-1/3 text-center mb-8 md:mb-0">
-              <h3 class="text-4xl font-bold text-gray-900">20K+</h3>
-              <p class="text-gray-600">Happy and loyal customers buy our products</p>
-            </div>
-            <div class="w-full md:w-1/3 text-center">
-              <h3 class="text-4xl font-bold text-gray-900">98%</h3>
-              <p class="text-gray-600">Customers who have purchased will come back again</p>
-            </div>
-          </div>
-        </div>
-      </section>
-      
-    <!-- Quality Section -->
-    <section class="py-20">
-        <div class="container mx-auto px-4 flex flex-col lg:flex-row items-center justify-center">
-            <!-- Image on the left -->
-            <div class="w-full lg:w-2/5 lg:pr-8 mb-8 lg:mb-0">
-                <img src="assets/images/img11.jpeg" alt="Quality Furniture" class="rounded-lg shadow-lg w-full" style="height: 450px; object-fit: cover;"> <!-- Set height using pixels -->
-            </div>
-    
-            <!-- Text on the right -->
-            <div class="w-full lg:w-2/5 text-center lg:text-left">
-                <h2 class="text-3xl font-bold mb-4">Quality Keeps Us Moving Forward.</h2>
-                <p class="text-gray-600 mb-6 text-justify">
-                    We have more than 30 years of experience producing and exporting furniture for international markets. More than ten million pieces of furniture have been delivered to families and businesses around the world.
-                </p>
-                <button class="bg-army-green text-white px-6 py-3 rounded-full transition duration-300 hover:bg-red-600">
-                    Learn More
-                </button>
-            </div>
-        </div>
-    </section>
-    
-    
-    
-<!-- Latest Furniture Section -->
-<section class="py-20 ">
-    <div class="container mx-auto px-4">
-        <div class="text-center mb-8">
-            <h2 class="text-3xl font-bold">Latest Furniture</h2>
-            <p class="mt-2 text-lg text-gray-600">Our newest product</p>
-        </div>
-        
-        <div class="flex items-center justify-between mb-4">
-            <div class="flex-1">
-                <span class="text-gray-500 cursor-pointer">← Drag →</span>
-            </div>
-            <button class="bg-army-green text-white px-6 py-2 rounded-full transition duration-300 hover:bg-red-600">Shop Ready Stock</button>
-        </div>
-
-        <div class="flex space-x-4 justify-center"> <!-- Center align cards -->
-            <!-- Card 1 -->
-            <div class="bg-white p-4 rounded-lg shadow-md w-48 h-64"> <!-- Increased width to w-48 -->
-                <img src="assets/images/img14.jpeg" alt="Edelis Chair" class="w-full h-32 object-cover rounded-lg mb-2"> <!-- Update with actual image path -->
-                <h3 class="text-lg font-semibold">Edelis Chair</h3>
-                <p class="text-gray-600">Makeup and Chairs</p>
-            </div>
-            <!-- Card 2 -->
-            <div class="bg-white p-4 rounded-lg shadow-md w-48 h-72 transform translate-y-1/4"> <!-- Increased width to w-48 and kept transform -->
-                <img src="assets/images/img15.jpeg" alt="Rumpi Chair" class="w-full h-32 object-cover rounded-lg mb-2"> <!-- Update with actual image path -->
-                <h3 class="text-lg font-semibold">Rumpi Chair</h3>
-                <p class="text-gray-600">Makeup and Chairs</p>
-            </div>
-            <!-- Card 3 -->
-            <div class="bg-white p-4 rounded-lg shadow-md w-48 h-64"> <!-- Increased width to w-48 -->
-                <img src="assets/images/img19.jpeg" alt="Timor Table" class="w-full h-32 object-cover rounded-lg mb-2"> <!-- Update with actual image path -->
-                <h3 class="text-lg font-semibold">Timor Table</h3>
-                <p class="text-gray-600">Workspace Desk</p>
-            </div>
-            <!-- Card 4 -->
-            <div class="bg-white p-4 rounded-lg shadow-md w-48 h-72 transform translate-y-1/4"> <!-- Increased width to w-48 and kept transform -->
-                <img src="assets/images/img9.jpeg" alt="Matai Wardrobe" class="w-full h-32 object-cover rounded-lg mb-2"> <!-- Update with actual image path -->
-                <h3 class="text-lg font-semibold">Matai Wardrobe</h3>
-                <p class="text-gray-600">Accent Tables & Cabinets</p>
-            </div>
-            <!-- Card 5 -->
-            <div class="bg-white p-4 rounded-lg shadow-md w-48 h-64"> <!-- Increased width to w-48 -->
-                <img src="assets/images/img15.jpeg" alt="Cita Chair" class="w-full h-32 object-cover rounded-lg mb-2"> <!-- Update with actual image path -->
-                <h3 class="text-lg font-semibold">Cita Chair</h3>
-                <p class="text-gray-600">Side Chair</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-<!-- Sourced From Sustainable Forests Section -->
-<section class="py-20 ">
-    <div class="container mx-auto px-4 flex flex-col lg:flex-row justify-center items-center">
-        <!-- Text Content -->
-        <div class="w-full lg:w-2/5 pr-10 lg:pr-10 text-center lg:text-left">
-            <h2 class="text-3xl font-bold">Sourced From Sustainable Forests.</h2>
-            <p class="mt-4 text-gray-600 text-justify">
-                We care about the origin of the wood. The wood we use comes from responsibly managed forests, including forests that we manage under accredited international certification.
-            </p>
-            <button class="mt-6 bg-army-green text-white px-4 py-2 rounded-full transition duration-300 hover:bg-red-600">Learn More</button>
-        </div>
-
-        <!-- Image Content -->
-        <div class="w-full lg:w-2/5 mt-6 lg:mt-0">
-            <img src="assets/images/img10.jpeg" alt="Sustainable Forest" class="rounded-lg shadow-lg w-full" style="height: 460px; object-fit: cover;">
-        </div>
-    </div>
-</section>
-
-
-<!-- Image Banner Section -->
-<section class="relative">
-    <img src="assets/images/img6.jpeg" alt="Banner Image" class="w-full h-96 object-cover md:h-[40rem] lg:h-[100rem]"> <!-- Update with actual image path -->
-    <div class="absolute top-0 right-0 w-full md:w-1/2 h-full flex items-center justify-end text-white p-4 md:p-8">
-        <div class="max-w-md text-right">
-            <h1 class="text-2xl md:text-4xl font-bold">CRAFTED JUST FOR YOU</h1>
-            <p class="mt-2 text-base md:text-lg">We understand that you want the perfect furniture to fit you and your home, that is why we offer customized order service.</p>
-            <button class="mt-4 bg-army-green text-white px-4 py-2 rounded-full transition duration-300 hover:bg-red-600 md:px-6 md:py-2">Customized Order</button>
-        </div>
-    </div>
-</section>
-
-
-
-
-
-
-    <!-- About Us Section -->
-    <section id="about" class="about-bg py-48 hidden">
-        <div class="container mx-auto px-4">
-            <div class="md:w-1/3 text-left text-white" data-aos="fade-left" data-aos-duration="1000"> 
-                <h1 class="text-3xl md:text-3xl text-army-green font-semibold">About Us</h1>
-                <p class="mt-4 text-lg text-justify" data-aos="fade-up" data-aos-duration="1200"> 
-                    We specialize in custom furniture, offering unique designs and high-quality craftsmanship.
+            <div class="flex flex-col lg:flex-row justify-between items-start">
+                <div class="lg:w-1/2 animate__animated animate__fadeInLeft">
+                    <p class="text-gray-400 text-lg mb-2">About us -></p>
+                    <h2 class="text-3xl font-bold">For Urban <br />Living.</h2>
+                </div>
+                <p class="mt-4 text-lg text-gray-600 lg:mt-0 lg:w-1/2 lg:text-right text-left animate__animated animate__fadeInRight" style="text-indent: 2rem;">
+                    We believe that good design should be easy to accept and comfortable to enjoy. For this reason, we collaborate with the best local designers to create furniture that is suitable for the needs of urban life—furniture that is pleasant to look at, reliable for the long term, but not difficult to deliver.
                 </p>
             </div>
-        </div>
-    </section>
-
-    <!-- Overview Section -->
-    <section id="overview-section" class="py-12 bg-white hidden" data-aos="fade-up" data-aos-duration="1000">
-        <div class="container mx-auto text-center">
-            <h2 class="text-2xl md:text-3xl font-semibold text-army-green">Overview</h2>
-            <p class="mt-4 text-gray-700 max-w-2xl mx-auto" data-aos="fade-up" data-aos-duration="1500">
-                From unique designs to quality craftsmanship, we are fully dedicated to transforming spaces.
-            </p>
-        </div>
-    </section>
-
-    <!-- Last Section -->
-    <section id="last-section" class="py-12 bg-white hidden" data-aos="fade-up" data-aos-duration="1000">
-        <div class="relative flex justify-start"></div>
-            <!-- Gray Background starting from the left, with space on the right -->
-            <div class="bg-gray-100 p-8 md:p-12 max-w-94 w-full"> 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-    
-                    <!-- First Text Section (inside the gray background) -->
-                    <div class="flex items-center text-left h-full" data-aos="fade-right" data-aos-duration="1200">
-                        <div class="max-w-md"> 
-                            <h3 class="text-lg md:text-xl font-semibold text-army-green">Carefully Considered Details & Perfections</h3>
-                            <p class="mt-4 text-gray-700">
-                                Each piece of furniture we create is designed with the utmost attention to detail.
-                            </p>
-                            <button class="mt-6 px-4 py-2 md:px-6 md:py-3 btn-green rounded-full transition duration-300 ease-in-out hover:bg-red-custom" data-aos="zoom-in" data-aos-duration="1500">Learn More</button>
-                        </div>
-                    </div>
-    
-                    <!-- First Image with cropped, business card style extending out -->
-                    <div class="relative rounded-lg shadow-lg overflow-hidden" style="width: 650px; height: 300px; position: relative; top: -20px;" data-aos="zoom-in" data-aos-duration="1500">
-                        <img src="assets/images/img6.jpeg" alt="Details & Perfection" class="w-full h-full object-cover object-center ">
-                    </div>
-    
-                    <!-- Second Image with cropped, business card style -->
-                    <div class="rounded-lg shadow-lg overflow-hidden" style="width: 500px; height: 300px;" data-aos="fade-left" data-aos-duration="1200">
-                        <img src="assets/images/img1.jpeg" alt="Living Room" class="w-full h-full object-cover object-center sm:w-64 md:w-full">
-                    </div>
-                    
-                    <!-- Second Text Section -->
-                    <div class="flex items-center text-left h-full" data-aos="fade-right" data-aos-duration="1200">
-                        <div class="max-w-md"> 
-                            <h3 class="text-lg md:text-xl font-semibold text-army-green">Crafted in Combination of Beauty & Perfection</h3>
-                            <p class="mt-4 text-gray-700">
-                                We focus on creating pieces that combine beauty and functionality, perfectly crafted to fit any environment.
-                            </p>
-                            <button class="mt-6 px-4 py-2 md:px-6 md:py-3 btn-green rounded-full transition duration-300 ease-in-out hover:bg-red-custom" data-aos="zoom-in" data-aos-duration="1500">Shop Now</button>
-                        </div>
-                    </div>
+            <div class="flex flex-wrap justify-between items-center mt-12">
+                <div class="w-full md:w-1/3 text-center mb-8 md:mb-0">
+                    <h3 class="text-4xl font-bold text-gray-900 counter" data-count="600">0</h3>
+                    <p class="text-gray-600">Products that we have created and sold on the market</p>
+                </div>
+                <div class="w-full md:w-1/3 text-center mb-8 md:mb-0">
+                    <h3 class="text-4xl font-bold text-gray-900 counter" data-count="300">0</h3>
+                    <p class="text-gray-600">Happy and loyal customers buy our products</p>
+                </div>
+                <div class="w-full md:w-1/3 text-center">
+                    <h3 class="text-4xl font-bold text-gray-900 counter" data-count="98">0</h3>
+                    <p class="text-gray-600">Customers who have purchased will come back again</p>
                 </div>
             </div>
         </div>
     </section>
 
-  <!-- Footer Section -->
-<<!-- Footer Section -->
+    <!-- Quality Section -->
+    <section class="py-20">
+        <div class="container mx-auto px-4 flex flex-col lg:flex-row items-center justify-center">
+            <div class="w-full lg:w-2/5 lg:pr-8 mb-8 lg:mb-0">
+                <img src="assets/images/img11.jpeg" alt="Quality Furniture" class="rounded-lg shadow-lg w-full" style="height: 450px; object-fit: cover;">
+            </div>
+            <div class="w-full lg:w-2/5 text-center lg:text-left">
+                <h2 class="text-3xl font-bold mb-4 animate__animated animate__fadeInRight">Quality Keeps Us Moving Forward.</h2>
+                <p class="text-gray-600 mb-6 text-justify animate__animated animate__fadeInRight">
+                    We have more than 30 years of experience producing and exporting furniture for international markets. More than ten million pieces of furniture have been delivered to families and businesses around the world.
+                </p>
+                <button class="btn">Learn More</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Furniture Section -->
+    <section class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold">Latest Furniture</h2>
+                <p class="mt-2 text-lg text-gray-600">Our newest product</p>
+            </div>
+            <div class="flex items-center justify-between mb-4">
+                <div class="flex-1">
+                    <span id="prev" class="text-gray-500 cursor-pointer">← Drag →</span>
+                </div>
+                <button class="btn">Shop Ready Stock</button>
+            </div>
+            <div id="card-container" class="flex flex-wrap justify-center min-h-[400px]">
+                <div class="bg-gray-100 p-4 rounded-lg shadow-md w-48 h-80 mx-2 my-2 transform transition-transform duration-300 ease-in-out translate-y-1/4">
+                    <img src="assets/images/img14.jpeg" alt="Edelis Chair" class="w-full h-48 object-cover rounded-lg mb-2">
+                    <h3 class="text-lg font-semibold">Edelis Chair</h3>
+                    <p class="text-gray-600">Makeup and Chairs</p>
+                </div>
+                <div class="bg-gray-100 p-4 rounded-lg shadow-md w-48 h-80 mx-2 my-2 transform transition-transform duration-300 ease-in-out">
+                    <img src="assets/images/img15.jpeg" alt="Rumpi Chair" class="w-full h-48 object-cover rounded-lg mb-2">
+                    <h3 class="text-lg font-semibold">Rumpi Chair</h3>
+                    <p class="text-gray-600">Makeup and Chairs</p>
+                </div>
+                <div class="bg-gray-100 p-4 rounded-lg shadow-md w-48 h-80 mx-2 my-2 transform transition-transform duration-300 ease-in-out translate-y-1/4">
+                    <img src="assets/images/img19.jpeg" alt="Timor Table" class="w-full h-48 object-cover rounded-lg mb-2">
+                    <h3 class="text-lg font-semibold">Timor Table</h3>
+                    <p class="text-gray-600">Workspace Desk</p>
+                </div>
+                <div class="bg-gray-100 p-4 rounded-lg shadow-md w-48 h-80 mx-2 my-2 transform transition-transform duration-300 ease-in-out">
+                    <img src="assets/images/img9.jpeg" alt="Matai Wardrobe" class="w-full h-48 object-cover rounded-lg mb-2">
+                    <h3 class="text-lg font-semibold">Matai Wardrobe</h3>
+                    <p class="text-gray-600">Accent Tables & Cabinets</p>
+                </div>
+                <div class="bg-gray-100 p-4 rounded-lg shadow-md w-48 h-80 mx-2 my-2 transform transition-transform duration-300 ease-in-out translate-y-1/4">
+                    <img src="assets/images/img15.jpeg" alt="Cita Chair" class="w-full h-48 object-cover rounded-lg mb-2">
+                    <h3 class="text-lg font-semibold">Cita Chair</h3>
+                    <p class="text-gray-600">Side Chair</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sourced From Sustainable Forests Section -->
+    <section class="py-20">
+        <div class="container mx-auto px-4 flex flex-col lg:flex-row justify-center items-center">
+            <div class="w-full lg:w-2/5 pr-10 lg:pr-10 text-center lg:text-left">
+                <h2 class="text-3xl font-bold">Sourced From Sustainable Forests.</h2>
+                <p class="mt-4 text-gray-600 text-justify">
+                    We care about the origin of the wood. The wood we use comes from responsibly managed forests, including forests that we manage under accredited international certification.
+                </p>
+                <button class="btn mt-6">Learn More</button>
+            </div>
+            <div class="w-full lg:w-2/5 mt-6 lg:mt-0">
+                <img src="assets/images/img10.jpeg" alt="Sustainable Forest" class="rounded-lg shadow-lg w-full" style="height: 460px; object-fit: cover;">
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Banner Section -->
+    <section class="relative">
+        <img src="assets/images/img6.jpeg" alt="Banner Image" class="w-full h-96 object-cover md:h-[40rem] lg:h-[100rem]">
+        <div class="absolute top-0 left-0 w-full h-full bg-black opacity-30"></div>
+        <div class="absolute top-0 right-0 w-full md:w-1/2 h-full flex items-center justify-end text-white p-4 md:p-8">
+            <div class="max-w-md text-right">
+                <h1 class="text-2xl md:text-4xl font-bold animate__animated animate__fadeInRight">CRAFTED JUST FOR YOU</h1>
+                <p class="mt-2 text-base md:text-lg animate__animated animate__fadeInRight">We understand that you want the perfect furniture to fit you and your home, that is why we offer customized order service.</p>
+                <button class="btn mt-4">Customized Order</button>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- About Us Section -->
+<section id="about" class="about-bg py-48 hidden relative">
+    <div class="overlay"></div> <!-- Overlay for About Us section -->
+    <div class="container mx-auto px-4">
+        <div class="md:w-1/3 text-left text-white" data-aos="fade-left" data-aos-duration="1000">
+            <h1 class="text-3xl md:text-3xl text-army-green font-semibold">About Us</h1>
+            <p class="mt-4 text-lg text-justify" data-aos="fade-up" data-aos-duration="1200">
+                We specialize in creating custom furniture tailored to meet the specific needs and desires of our clients. With extensive experience in the furniture industry, we offer unique designs, high-quality craftsmanship, and full dedication to every project. Whether you're furnishing your home, office, or any other space, we provide personalized solutions that perfectly match your style and preferences.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Overview Section -->
+<section id="overview-section" class="py-12 bg-white hidden" data-aos="fade-up" data-aos-duration="1000">
+    <div class="container mx-auto text-center">
+        <h2 class="text-2xl md:text-3xl font-semibold text-army-green">Overview</h2>
+        <p class="mt-4 text-gray-700 max-w-2xl mx-auto" data-aos="fade-up" data-aos-duration="1500">
+            From unique designs to quality craftsmanship, we are fully dedicated to transforming spaces.
+        </p>
+    </div>
+</section>
+
+<!-- Last Section -->
+<section id="last-section" class="py-12 bg-white hidden" data-aos="fade-up" data-aos-duration="1000">
+    <div class="relative flex justify-start">
+        <div class="bg-gray-100 p-8 md:p-12 max-w-94 w-full">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                <!-- First Text Section -->
+                <div class="flex items-center text-left h-full" data-aos="fade-right" data-aos-duration="1200">
+                    <div class="max-w-md">
+                        <h3 class="text-lg md:text-xl font-semibold text-army-green">Carefully Considered Details & Perfections</h3>
+                        <p class="mt-4 text-gray-700">
+                            Each piece of furniture we create is designed with the utmost attention to detail.
+                        </p>
+                        <button class="btn mt-6">Learn More</button>
+                    </div>
+                </div>
+
+                <!-- First Image -->
+                <div class="rounded-lg shadow-lg overflow-hidden" style="width: 500px; height: 300px;" data-aos="fade-left" data-aos-duration="1200">
+                    <img src="assets/images/img6.jpeg" alt="Details & Perfection" class="w-full h-full object-cover object-center">
+                </div>
+
+                <!-- Second Text Section -->
+                <div class="flex items-center text-left h-full" data-aos="fade-right" data-aos-duration="1200">
+                    <div class="max-w-md">
+                        <h3 class="text-lg md:text-xl font-semibold text-army-green">Crafted in Combination of Beauty & Perfection</h3>
+                        <p class="mt-4 text-gray-700">
+                            We focus on creating pieces that combine beauty and functionality, perfectly crafted to fit any environment.
+                        </p>
+                        <button class="btn mt-6">Shop Now</button>
+                    </div>
+                </div>
+
+                <!-- Second Image -->
+                <div class="rounded-lg shadow-lg overflow-hidden" style="width: 500px; height: 300px;" data-aos="fade-left" data-aos-duration="1200">
+                    <img src="assets/images/img1.jpeg" alt="Living Room" class="w-full h-full object-cover object-center">
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer Section -->
 <footer class="bg-white py-16">
     <div class="container mx-auto px-6 lg:px-10">
-      <!-- Watermark Company Name and Slogan -->
-      <div class="relative text-center mb-10">
-        <h2 class="text-6xl lg:text-7xl font-bold text-gray-300 opacity-20">Mobileri Lala</h2>
-        <p class="mt-6 text-gray-600 text-lg lg:text-xl max-w-md mx-auto">
-          We believe that good design should be easy to accept and comfortable to enjoy.
-        </p>
-      </div>
-  
-      <!-- Lower Block (Socials, Contact, Menu Links, Languages) -->
-      <div class="grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-16">
-        
-        <!-- Social Icons Section -->
-        <div>
-          <h3 class="text-lg font-semibold">Follow Us</h3>
-          <ul class="mt-4 space-y-2">
-            <li><a href="#" class="text-gray-600 hover:text-army-green">Facebook</a></li>
-            <li><a href="#" class="text-gray-600 hover:text-army-green">Instagram</a></li>
-            <li><a href="#" class="text-gray-600 hover:text-army-green">Twitter</a></li>
-          </ul>
+        <div class="relative text-center mb-10">
+            <h2 class="text-6xl lg:text-7xl font-bold text-gray-300 opacity-20">Mobileri Lala</h2>
+            <p class="mt-6 text-gray-600 text-lg lg:text-xl max-w-md mx-auto">
+                We believe that good design should be easy to accept and comfortable to enjoy.
+            </p>
         </div>
-  
-        <!-- Contact and Location Section -->
-        <div>
-          <h3 class="text-lg font-semibold">Contact Us</h3>
-          <p class="mt-4 text-gray-600">+1 (999) 888-77-66</p>
-          <p class="text-gray-600">hello@mobilerilala.com</p>
-  
-          <h3 class="text-lg font-semibold mt-6">Location</h3>
-          <p class="mt-2 text-gray-600">483920, Moscow, Myasnitskaya 22/2/5, Office 4</p>
+
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-16">
+            <div>
+                <h3 class="text-lg font-semibold">Follow Us</h3>
+                <ul class="mt-4 space-y-2">
+                    <li><a href="#" class="text-gray-600 hover:text-army-green">Facebook</a></li>
+                    <li><a href="#" class="text-gray-600 hover:text-army-green">Instagram</a></li>
+                    <li><a href="#" class="text-gray-600 hover:text-army-green">Twitter</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-lg font-semibold">Contact Us</h3>
+                <p class="mt-4 text-gray-600">+1 (999) 888-77-66</p>
+                <p class="text-gray-600">hello@mobilerilala.com</p>
+
+                <h3 class="text-lg font-semibold mt-6">Location</h3>
+                <p class="mt-2 text-gray-600">483920, Moscow, Myasnitskaya 22/2/5, Office 4</p>
+            </div>
+
+            <div>
+                <h3 class="text-lg font-semibold">Quick Links</h3>
+                <ul class="mt-4 space-y-2">
+                    <li><a href="#" class="text-gray-600 hover:text-army-green">About</a></li>
+                    <li><a href="#" class="text-gray-600 hover:text-army-green">Testimonials</a></li>
+                    <li><a href="#" class="text-gray-600 hover:text-army-green">Product</a></li>
+                    <li><a href="#" class="text-gray-600 hover:text-army-green">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-lg font-semibold">Languages</h3>
+                <div class="mt-4 flex space-x-4">
+                    <a href="#" class="text-gray-600 hover:text-army-green">En</a>
+                    <a href="#" class="text-gray-600 hover:text-army-green">Es</a>
+                    <a href="#" class="text-gray-600 hover:text-army-green">Fr</a>
+                    <a href="#" class="text-gray-600 hover:text-army-green">De</a>
+                    <a href="#" class="text-gray-600 hover:text-army-green">Ru</a>
+                </div>
+            </div>
         </div>
-  
-        <!-- Quick Links Section -->
-        <div>
-          <h3 class="text-lg font-semibold">Quick Links</h3>
-          <ul class="mt-4 space-y-2">
-            <li><a href="#" class="text-gray-600 hover:text-army-green">About</a></li>
-            <li><a href="#" class="text-gray-600 hover:text-army-green">Testimonials</a></li>
-            <li><a href="#" class="text-gray-600 hover:text-army-green">Product</a></li>
-            <li><a href="#" class="text-gray-600 hover:text-army-green">Contact Us</a></li>
-          </ul>
+
+        <div class="mt-16 text-center text-sm text-gray-500">
+            <p>© 2021 Mobileri Lala. All Rights Reserved.</p>
         </div>
-  
-        <!-- Languages Section -->
-        <div>
-          <h3 class="text-lg font-semibold">Languages</h3>
-          <div class="mt-4 flex space-x-4">
-            <a href="#" class="text-gray-600 hover:text-army-green">En</a>
-            <a href="#" class="text-gray-600 hover:text-army-green">Es</a>
-            <a href="#" class="text-gray-600 hover:text-army-green">Fr</a>
-            <a href="#" class="text-gray-600 hover:text-army-green">De</a>
-            <a href="#" class="text-gray-600 hover:text-army-green">Ru</a>
-          </div>
-        </div>
-      </div>
-  
-      <!-- Copyright Notice -->
-      <div class="mt-16 text-center text-sm text-gray-500">
-        <p>© 2021 Mobileri Lala. All Rights Reserved.</p>
-      </div>
     </div>
-  </footer>
-  
-  
+</footer>
 
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+    // Initialize AOS
+    AOS.init({
+        once: true,
+        duration: 1000,
+    });
 
+    const navToggle = document.getElementById('nav-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
 
+    navToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
 
+    function showPage(page) {
+        // Hide all sections first
+        document.getElementById('home').classList.add('hidden');
+        document.getElementById('about').classList.add('hidden');
+        document.getElementById('home-sections').classList.add('hidden');
+        document.getElementById('overview-section').classList.add('hidden');
+        document.getElementById('last-section').classList.add('hidden');
 
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>
-      // Initialize AOS
-      AOS.init({
-          once: true,
-          duration: 1000,
-      });
-  
-      // Function to toggle the mobile menu
-      const navToggle = document.getElementById('nav-toggle');
-      const mobileMenu = document.getElementById('mobile-menu');
-  
-      navToggle.addEventListener('click', () => {
-          mobileMenu.classList.toggle('hidden');
-      });
-  
-      // Function to show the selected page
-      function showPage(page) {
-          // Hide all sections
-          document.getElementById('home').classList.add('hidden');
-          document.getElementById('about').classList.add('hidden');
-          document.getElementById('overview-section').classList.add('hidden');
-          document.getElementById('last-section').classList.add('hidden');
-  
-          // Show the requested section
-          if (page === 'about') {
-              document.getElementById('about').classList.remove('hidden');
-              document.getElementById('overview-section').classList.remove('hidden');
-              document.getElementById('last-section').classList.remove('hidden');
-          } else {
-              document.getElementById('home').classList.remove('hidden');
-          }
-      }
-  
-      // Function to toggle search bar
-      function toggleSearch() {
-          const searchBar = document.getElementById('searchBar');
-          if (searchBar.classList.contains('hidden')) {
-              searchBar.classList.remove('hidden');
-              searchBar.style.width = '150px';
-              searchBar.focus();
-          } else {
-              searchBar.classList.add('hidden');
-              searchBar.style.width = '0';
-          }
-      }
-  
-      // Menu toggle is already handled above, no need to duplicate
-  </script>
-  
+        // Show the requested section
+        if (page === 'about') {
+            document.getElementById('about').classList.remove('hidden');
+            document.getElementById('overview-section').classList.remove('hidden');
+            document.getElementById('last-section').classList.remove('hidden');
+        } else {
+            document.getElementById('home').classList.remove('hidden');
+            document.getElementById('home-sections').classList.remove('hidden');
+        }
+    }
+
+    function toggleSearch() {
+        const searchBar = document.getElementById('searchBar');
+        if (searchBar.classList.contains('hidden')) {
+            searchBar.classList.remove('hidden');
+            searchBar.style.width = '150px';
+            searchBar.focus();
+        } else {
+            searchBar.classList.add('hidden');
+            searchBar.style.width = '0';
+        }
+    }
+
+    // Counter functionality
+    document.querySelectorAll('.counter').forEach(counter => {
+        const updateCount = () => {
+            const target = +counter.getAttribute('data-count');
+            const count = +counter.innerText;
+
+            const increment = target / 200; // Adjust for speed
+
+            if (count < target) {
+                counter.innerText = Math.ceil(count + increment);
+                setTimeout(updateCount, 1);
+            } else {
+                counter.innerText = target;
+            }
+        };
+
+        updateCount();
+    });
+
+    const cards = document.querySelectorAll('#card-container > div');
+    const totalCards = cards.length;
+    let currentIndex = 0;
+
+    function showCard(index) {
+        cards.forEach((card, i) => {
+            if (window.innerWidth < 768) {
+                card.classList.toggle('hidden', i !== index);
+            } else {
+                card.classList.remove('hidden');
+                if (i === 1 || i === 3) {
+                    card.classList.add('transform', 'translate-y-1/4');
+                } else {
+                    card.classList.remove('transform', 'translate-y-1/4');
+                }
+            }
+        });
+    }
+
+    document.getElementById('prev').addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % totalCards;
+        showCard(currentIndex);
+    });
+
+    showCard(currentIndex);
+
+    function adjustCardDisplay() {
+        if (window.innerWidth < 768) {
+            showCard(currentIndex);
+        } else {
+            cards.forEach((card, i) => {
+                card.classList.remove('hidden');
+                if (i === 1 || i === 3) {
+                    card.classList.add('transform', 'translate-y-1/4');
+                } else {
+                    card.classList.remove('transform', 'translate-y-1/4');
+                }
+            });
+        }
+    }
+
+    window.addEventListener('resize', adjustCardDisplay);
+    adjustCardDisplay();
+</script>
+
 </body>
 </html>
+
+
+
