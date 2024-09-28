@@ -87,12 +87,6 @@
             background-color: #b22222; /* Red */
             transform: scale(1.05);
         }
-
-        @media (max-width: 768px) {
-            .cart-badge {
-                right: 10px; /* Adjust right positioning as needed */
-            }
-        }
     </style>
 </head>
 <body class="bg-white font-sans antialiased">
@@ -204,7 +198,7 @@
     <!-- Quality Section -->
     <section class="py-20">
         <div class="container mx-auto px-4 flex flex-col lg:flex-row items-center justify-center">
-            <div class="w-full lg:w-2/5 lg:pr-8 mb-8 lg:mb-0">
+            <div class="w-full lg:w-2/5 lg:pr-8 mb-8 lg:mb-0" data-aos="fade-right">
                 <img src="assets/images/img11.jpeg" alt="Quality Furniture" class="rounded-lg shadow-lg w-full" style="height: 450px; object-fit: cover;" data-aos="fade-right">
             </div>
             <div class="w-full lg:w-2/5 text-center lg:text-left" data-aos="fade-left">
@@ -263,14 +257,14 @@
     <!-- Sourced From Sustainable Forests Section -->
     <section class="py-20">
         <div class="container mx-auto px-4 flex flex-col lg:flex-row justify-center items-center">
-            <div class="w-full lg:w-2/5 pr-10 lg:pr-10 text-center lg:text-left">
+            <div class="w-full lg:w-2/5 pr-10 lg:pr-10 text-center lg:text-left" data-aos="fade-right">
                 <h2 class="text-3xl font-bold">Sourced From Sustainable Forests.</h2>
                 <p class="mt-4 text-gray-600 text-justify">
                     We care about the origin of the wood. The wood we use comes from responsibly managed forests, including forests that we manage under accredited international certification.
                 </p>
                 <button class="btn mt-6">Learn More</button>
             </div>
-            <div class="w-full lg:w-2/5 mt-6 lg:mt-0">
+            <div class="w-full lg:w-2/5 mt-6 lg:mt-0" data-aos="fade-left">
                 <img src="assets/images/img10.jpeg" alt="Sustainable Forest" class="rounded-lg shadow-lg w-full" style="height: 460px; object-fit: cover;">
             </div>
         </div>
@@ -297,9 +291,10 @@
         <div class="md:w-1/3 text-left text-white" data-aos="fade-left" data-aos-duration="1000">
             <h1 class="text-3xl md:text-3xl text-army-green font-semibold">About Us</h1>
             <p class="mt-4 text-lg text-justify" data-aos="fade-up" data-aos-duration="1200">
-                We specialize in creating custom furniture tailored to meet the specific needs and desires of our clients. With extensive experience in the furniture industry, we offer unique designs, high-quality craftsmanship, and full dedication to every project. Whether you're furnishing your home, office, or any other space, we provide personalized solutions that perfectly match your style and preferences.
+                From unique designs to quality craftsmanship, we are fully dedicated to transforming spaces.
             </p>
         </div>
+        
     </div>
 </section>
 
@@ -308,7 +303,7 @@
     <div class="container mx-auto text-center">
         <h2 class="text-2xl md:text-3xl font-semibold text-army-green">Overview</h2>
         <p class="mt-4 text-gray-700 max-w-2xl mx-auto" data-aos="fade-up" data-aos-duration="1500">
-            From unique designs to quality craftsmanship, we are fully dedicated to transforming spaces.
+            We specialize in creating custom furniture tailored to meet the specific needs and desires of our clients. With extensive experience in the furniture industry, we offer unique designs, high-quality craftsmanship, and full dedication to every project. Whether you're furnishing your home, office, or any other space, we provide personalized solutions that perfectly match your style and preferences.
         </p>
     </div>
 </section>
@@ -331,12 +326,12 @@
                 </div>
 
                 <!-- First Image -->
-                <div class="rounded-lg shadow-lg overflow-hidden order-2" style="width: 500px; height: 300px;" data-aos="fade-left" data-aos-duration="1200">
+                <div class="rounded-lg shadow-lg overflow-hidden order-2" style="width: 500px; height: 500px;" data-aos="fade-left" data-aos-duration="1200">
                     <img src="assets/images/img6.jpeg" alt="Details & Perfection" class="w-full h-full object-cover object-center">
                 </div>
 
                 <!-- Second Image -->
-                <div class="rounded-lg shadow-lg overflow-hidden order-1 md:order-2" style="width: 500px; height: 300px;" data-aos="fade-left" data-aos-duration="1200">
+                <div class="rounded-lg shadow-lg overflow-hidden order-1 md:order-2" style="width: 500px; height: 500px;" data-aos="fade-left" data-aos-duration="1200">
                     <img src="assets/images/img1.jpeg" alt="Living Room" class="w-full h-full object-cover object-center">
                 </div>
 
@@ -490,10 +485,10 @@
                 card.classList.toggle('hidden', i !== index);
             } else {
                 card.classList.remove('hidden');
-                if (i === 1 || i === 3) {
-                    card.classList.add('transform', 'translate-y-1/4');
+                if (i % 2 === 1) { // Apply translate-y only to second, fourth, etc.
+                    card.classList.add('translate-y-1/4');
                 } else {
-                    card.classList.remove('transform', 'translate-y-1/4');
+                    card.classList.remove('translate-y-1/4');
                 }
             }
         });
@@ -512,10 +507,10 @@
         } else {
             cards.forEach((card, i) => {
                 card.classList.remove('hidden');
-                if (i === 1 || i === 3) {
-                    card.classList.add('transform', 'translate-y-1/4');
+                if (i % 2 === 1) { // Apply translate-y only to second, fourth, etc.
+                    card.classList.add('translate-y-1/4');
                 } else {
-                    card.classList.remove('transform', 'translate-y-1/4');
+                    card.classList.remove('translate-y-1/4');
                 }
             });
         }
@@ -527,4 +522,3 @@
 
 </body>
 </html>
-
